@@ -20,6 +20,7 @@ import { HaztePremiumComponent } from './components/hazte-premium/hazte-premium.
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { SideNavComponent } from './components/side-nav/side-nav.component';
+import { AvisosComponent } from './components/avisos/avisos.component';
 
 
 
@@ -38,6 +39,7 @@ import { SideNavComponent } from './components/side-nav/side-nav.component';
     HomePageComponent,
     InicioComponent,
     SideNavComponent,
+    AvisosComponent,
   ],
   imports: [
     BrowserModule,
