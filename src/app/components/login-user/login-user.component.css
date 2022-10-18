@@ -1,0 +1,21 @@
+body{
+    font-family: 'Be Vietnam', sans-serif;
+    color: #000;
+}
+h1,h2,h3{
+    font-family: 'Concert One';
+}
+
+.icon-title{
+    font-family: 'Be Vietnam', sans-serif;
+    font-size:15px;
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    padding: 5px;
+}
+.title{
+    width: 100%;
+    border-bottom: 0.8px solid #000000;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}

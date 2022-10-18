@@ -1,0 +1,31 @@
+{
+    "users":[
+        {"id":1,
+        "name":"Nadia Lorena",
+        "lastname":"Tinoco Ricapa",
+        "phone":"940149603",
+        "grade":"Estudiante",
+        "email":"lorenanadia2002@gmail.com",
+        "username":"Nad4",
+        "password":"contraseñajaja"
+        },
+        {"id":2,
+        "name":"Angelica Maria",
+        "lastname":"Lira Pacheco",
+        "phone":"928291992",
+        "grade":"Estudiante",
+        "email":"angelica.0406@gmail.com",
+        "username":"Lika",
+        "password":"norecuerdoxd"
+        },
+        {"id":3,
+        "name":"William",
+        "lastname":"Huertas",
+        "phone":"928291966",
+        "grade":"Estudiante",
+        "email":"willy.0406@gmail.com",
+        "username":"Bobzinho",
+        "password":"contraseña123"
+        }
+    ]
+}
