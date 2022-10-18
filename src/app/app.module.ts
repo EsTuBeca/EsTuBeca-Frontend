@@ -11,6 +11,15 @@ import { LoginUserComponent } from './components/login-user/login-user.component
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { RegisterUserComponent } from './components/register-user/register-user.component';
 import { AngularMaterialModule } from './components/shared/angular-material/angular-material.module';
+import { BecasComponent } from './components/becas/becas.component';
+import { BecasDetalleComponent } from './components/becas-detalle/becas-detalle.component';
+import { CursosComponent } from './components/cursos/cursos.component';
+import { EditUserComponent } from './components/edit-user/edit-user.component';
+import { ForoComponent } from './components/foro/foro.component';
+import { HaztePremiumComponent } from './components/hazte-premium/hazte-premium.component';
+import { HomePageComponent } from './components/home-page/home-page.component';
+import { InicioComponent } from './components/inicio/inicio.component';
+import { SideNavComponent } from './components/side-nav/side-nav.component';
 
 
 
@@ -20,6 +29,15 @@ import { AngularMaterialModule } from './components/shared/angular-material/angu
     NavbarComponent,
     LoginUserComponent,
     RegisterUserComponent,
+    BecasComponent,
+    BecasDetalleComponent,
+    CursosComponent,
+    EditUserComponent,
+    ForoComponent,
+    HaztePremiumComponent,
+    HomePageComponent,
+    InicioComponent,
+    SideNavComponent,
   ],
   imports: [
     BrowserModule,
