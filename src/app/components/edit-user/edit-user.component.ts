@@ -30,7 +30,8 @@ export class EditUserComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.idUser = 1;
+    const variable = this.route.snapshot.paramMap.get('id');
+    this.idUser = variable;
     //this.idUser = this.route.snapshot.paramMap.get('id');
     this.userService.getUserId(this.idUser)
     .subscribe((data) => {
@@ -48,6 +49,7 @@ export class EditUserComponent implements OnInit {
   }
 
   updateUser() {
+    const variable = this.route.snapshot.paramMap.get('id');
     const user: User= {
       id: this.idUser,
       name: this.myForm.get('name')!.value,
@@ -63,12 +65,16 @@ export class EditUserComponent implements OnInit {
         this.snackBar.open('Actualización exitosa!', '', {
           duration: 3000,
         });
-        this.router.navigate(['/homePage']);
+        this.router.navigate(['/homePage',variable]);
       },
       error: (err) => {
         console.log(err);
       },
     });
+  }
+  cancelUser() {
+    const variable = this.route.snapshot.paramMap.get('id');
+    this.router.navigate(['/homePage',variable]);
   }
   captureFile(event): any{
     const catchedFile = event.target.files[0];
