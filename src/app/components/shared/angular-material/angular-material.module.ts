@@ -9,6 +9,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatCardModule } from '@angular/material/card';
+import { MatListModule } from '@angular/material/list';
 
 
 
@@ -26,6 +29,9 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatButtonModule,
     MatSnackBarModule,
     MatFormFieldModule,
+    MatSidenavModule,
+    MatCardModule,
+    MatListModule
   ],
   exports: [
     MatSliderModule,
@@ -37,7 +43,10 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatIconModule,
     MatButtonModule,
     MatSnackBarModule,
-  ],
+    MatSidenavModule,
+    MatCardModule,
+    MatListModule
+  ]
 
 })
 export class AngularMaterialModule { }
