@@ -1,1 +1,22 @@
-<p>foro works!</p>
+
+<h1>Foro</h1>
+<mat-tab-group animationDuration="0ms">
+    <mat-tab>
+        <ng-template mat-tab-label >
+              <mat-icon class="example-tab-icon">thumb_up</mat-icon>
+              Global posts
+          </ng-template>
+          <app-list-posts></app-list-posts>
+        </mat-tab>
+          
+          <mat-tab>
+                <ng-template mat-tab-label>
+                <mat-icon class="example-tab-icon"> add</mat-icon> 
+                New post
+              </ng-template>
+              <app-new-post></app-new-post>
+          </mat-tab>
+
+  </mat-tab-group>
+
+

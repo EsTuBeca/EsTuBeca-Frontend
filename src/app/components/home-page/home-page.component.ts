@@ -17,6 +17,7 @@ export class HomePageComponent implements AfterViewInit {
 
   ngOnInit(): void {
     const variable = this.route.snapshot.paramMap.get('id');
+    console.log("home"+ variable)
   }
 
   ngAfterViewInit(): void {

@@ -1,3 +1,7 @@
+import { AddBecaComponent } from './components/add-beca/add-beca.component';
+import { EditBecaComponent } from './components/edit-beca/edit-beca.component';
+import { ListPostsComponent } from './components/list-posts/list-posts.component';
+import { NewPostComponent } from './components/new-post/new-post.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginUserComponent } from './components/login-user/login-user.component';
@@ -19,13 +23,18 @@ const routes: Routes = [
  // {path:'/:id', component: LoginUserComponent}, 
   {path:'',redirectTo:'',pathMatch:'full'},
   {path:'homePage/:id',component: HomePageComponent,
-  children : [ {path:'premium',component: HaztePremiumComponent},
+  children : [
+  {path:'premium',component: HaztePremiumComponent},
   {path:'becas',component: BecasComponent},
-  {path:'foro',component: ForoComponent},
+  {path:'foro/:id2',component: ForoComponent},
+  {path:'new-post',component: NewPostComponent},
+  {path:'list-posts',component: ListPostsComponent},
   {path:'avisos',component: AvisosComponent},
   {path:'cursos',component: CursosComponent},
   {path:'inicio',component: InicioComponent},
-  {path:'detalle',component:BecasDetalleComponent}
+  {path:'detalle',component:BecasDetalleComponent},
+  {path:'edit/:id',component:EditBecaComponent},
+  {path:'add',component:AddBecaComponent}
 ]}
 ];
 

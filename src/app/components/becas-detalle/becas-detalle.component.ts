@@ -1,3 +1,5 @@
+import { DetalleBeca } from './../../models/detalle-beca';
+import { DetalleBecaService } from './../../services/detalle-beca.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BecasDetalleComponent implements OnInit {
 
-  constructor() { }
+
+  detalles:DetalleBeca[]=[]
+  constructor(private detalleBecaService:DetalleBecaService) { }
 
   ngOnInit(): void {
+    
+  }
+  getDetalleBeca(){
+    this.detalles=this.detalleBecaService.getDetalleBeca();
   }
 
 }

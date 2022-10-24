@@ -29,6 +29,7 @@ export class SideNavComponent implements OnInit {
 
   ngOnInit(): void {
     const variable = this.route.snapshot.paramMap.get('id');
+    console.log("sidenav "+ variable)
     this.idUser = variable;
     this.userService.getUserId(this.idUser)
     .subscribe((data) => {

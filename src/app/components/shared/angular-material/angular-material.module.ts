@@ -12,8 +12,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
-
-
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatChipsModule, MAT_CHIPS_DEFAULT_OPTIONS} from '@angular/material/chips';
 
 @NgModule({
   declarations: [],
@@ -31,7 +31,9 @@ import { MatListModule } from '@angular/material/list';
     MatFormFieldModule,
     MatSidenavModule,
     MatCardModule,
-    MatListModule
+    MatListModule,
+    MatTabsModule,
+    MatChipsModule
   ],
   exports: [
     MatSliderModule,
@@ -45,8 +47,9 @@ import { MatListModule } from '@angular/material/list';
     MatSnackBarModule,
     MatSidenavModule,
     MatCardModule,
-    MatListModule
+    MatListModule,
+    MatTabsModule,
+    MatChipsModule
   ]
-
 })
 export class AngularMaterialModule { }

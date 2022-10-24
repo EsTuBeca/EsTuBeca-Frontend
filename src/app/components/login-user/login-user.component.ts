@@ -55,4 +55,6 @@ export class LoginUserComponent implements OnInit {
       alert("Algo esta mal!")
     })
   }
+
+
 }

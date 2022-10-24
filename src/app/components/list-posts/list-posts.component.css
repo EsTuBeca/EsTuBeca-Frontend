@@ -1,0 +1,131 @@
+.article-preview {
+  border-top: 1px solid rgba(0, 0, 0, .1);
+  padding: 1.5rem 0
+}
+
+.article-preview .article-meta {
+  margin: 0 0 1rem
+}
+
+.article-preview .preview-link h1 {
+  font-weight: 600 !important;
+  font-size: 1.5rem !important;
+  margin-bottom: 3px
+}
+
+.article-preview .preview-link p {
+  font-weight: 300;
+  font-size: 24px;
+  color: #999;
+  margin-bottom: 15px;
+  font-size: 1rem;
+  line-height: 1.3rem
+}
+
+.article-preview .preview-link span {
+  max-width: 30%;
+  font-size: .8rem;
+  font-weight: 300;
+  color: #bbb;
+  vertical-align: middle
+}
+
+.article-preview .preview-link ul {
+  float: right;
+  max-width: 50%;
+  vertical-align: top
+}
+
+.article-preview .preview-link ul li {
+  font-weight: 300;
+  font-size: .8rem !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important
+}
+
+.preview-link {
+  color: inherit !important
+}
+
+.preview-link:hover {
+  text-decoration: inherit !important
+}
+
+.preview-link h1 {
+  font-weight: 600 !important;
+  font-size: 1.5rem !important;
+  margin-bottom: 3px
+}
+
+.article-preview .preview-link p {
+  font-weight: 300;
+  font-size: 24px;
+  color: #999;
+  margin-bottom: 15px;
+  font-size: 1rem;
+  line-height: 1.3rem
+}
+
+.article-preview .preview-link span {
+  max-width: 30%;
+  font-size: .8rem;
+  font-weight: 300;
+  color: #bbb;
+  vertical-align: middle
+}
+
+.article-preview .preview-link ul {
+  float: right;
+  max-width: 50%;
+  vertical-align: top
+}
+
+.article-preview .preview-link ul li {
+  font-weight: 300;
+  font-size: .8rem !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important
+}
+
+ul .tag-list {
+  padding-left: 0 !important;
+  display: inline-block;
+  list-style: none !important
+}
+
+ul .tag-list li {
+  display: inline-block !important
+}
+
+.tag-pill {
+  padding-right: .6em;
+  padding-left: .6em;
+  border-radius: 10rem
+}
+
+.tag-default {
+  background-color: #818a91
+}
+
+.tag-default[href]:focus,
+.tag-default[href]:hover {
+  background-color: #687077
+}
+
+.tag-primary {
+  background-color: #5cb85c
+}
+
+.pull-xs-right {
+  float: right !important
+}
+
+ul.tag-list {
+  padding-left: 0 !important;
+  display: inline-block;
+  list-style: none !important
+}
+
+ul.tag-list li {
+  display: inline-block !important
+}

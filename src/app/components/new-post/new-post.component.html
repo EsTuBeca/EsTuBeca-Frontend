@@ -1,0 +1,55 @@
+<div class="editor-page">
+    <div class="container-page">
+      <div class="row">
+
+          <form [formGroup]="postForm">
+              <fieldset>  
+              <fieldset class="form-group">
+                <input class="form-control form-control-lg"
+                  formControlName="title"
+                  type="text"
+                  placeholder="Título" />
+              </fieldset>
+  
+              <fieldset class="form-group">
+                <input class="form-control"
+                  formControlName="description"
+                  type="text"
+                  placeholder="Descripción" />
+              </fieldset>
+  
+              <fieldset class="form-group">
+                <textarea class="form-control"
+                  formControlName="body"
+                  rows="8"
+                  placeholder="Escribe aquí el contenido del post.">
+                </textarea>
+              </fieldset>
+  
+              <fieldset class="form-group">
+                <input class="form-control"
+                  type="text"
+                  placeholder="Ingrese tags"
+                  [formControl]="tagField"
+                  (keyup.enter)="addTag()" />
+  
+                <div class="tag-list">
+                  <span *ngFor="let tag of post.tagList"
+                    class="tag-default tag-pill">
+                    <span class="tag-name">{{ tag }}</span>
+                    <mat-icon (click)="removeTag(tag)"> cancel</mat-icon>
+                    
+                  </span>
+                </div>
+              </fieldset>
+          
+              <button class="btn-primary" type="button" (click)="submitForm()">
+               <span>Publicar</span>
+              </button>
+  
+            </fieldset>
+          </form>
+  
+      </div>
+    </div>
+  </div>
