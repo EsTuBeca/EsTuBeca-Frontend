@@ -7,6 +7,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ReadVarExpr, visitAll } from '@angular/compiler';
 import { DomSanitizer } from '@angular/platform-browser';
+import { ProfileService } from 'src/app/services/profile.service';
+import { Profile } from 'src/app/models/profile';
 
 @Component({
   selector: 'app-side-nav',
@@ -17,29 +19,29 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class SideNavComponent implements OnInit {
   myForm!: FormGroup;
   user!: User;
+  profile!:Profile;
   idUser: any;
   public imgfiles: any = [];
   public previewImg!: string;
-  public nombre!: string;
+  nombreCompleto!: string;
+  nombreUsu!: string;
 
   constructor(
     public route:ActivatedRoute, 
     private userService: UserService,
+    private profileService: ProfileService,
     private fb: FormBuilder) { }
 
   ngOnInit(): void {
     const variable = this.route.snapshot.paramMap.get('id');
     console.log("sidenav "+ variable)
     this.idUser = variable;
-    this.userService.getUserId(this.idUser)
+    this.profileService.getProfileId(this.idUser)
     .subscribe((data) => {
-      this.user = data;
-      this.nombre = this.user.name;
-      const app = document.getElementById("usuario");
-      const p = document.createElement("p");
-      p.textContent = this.nombre;
-      app?.appendChild(p);
+      this.profile = data;
+      this.user = this.profile.user;
+      this.nombreCompleto = this.profile.name + ' ' + this.profile.lastName;
+      this.nombreUsu = this.user.username;
     })   
-    
   }
 }

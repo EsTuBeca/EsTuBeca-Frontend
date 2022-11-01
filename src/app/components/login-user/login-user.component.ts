@@ -17,7 +17,7 @@ export class LoginUserComponent implements OnInit {
     public myForm !: FormGroup;
     user !: User;
     idUser:any;
-    basePath:string=environment.basePath;
+    basePath:string=environment.api_url;
 
   constructor(
     private fb:FormBuilder, 
@@ -35,7 +35,7 @@ export class LoginUserComponent implements OnInit {
   }
   
   login(){
-    this.http.get<any>(this.basePath)
+    this.http.get<any>(`${this.basePath}/users`)
     .subscribe(res=>{
       const user = res.find((a:any)=>{
         return a.email === this.myForm.value.email && a.password === this.myForm.value.password

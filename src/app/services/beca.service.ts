@@ -7,25 +7,25 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class BecaService {
-  basePath1:string=environment.basePath1;
+  basePath1:string=environment.api_url;
   constructor(private http: HttpClient) { }
   getBeca() {
-    return this.http.get<Beca[]>(this.basePath1);
+    return this.http.get<Beca[]>(`${this.basePath1}/becas`);
   }
 
   getBecaId(id:any){
-    return this.http.get<Beca>(`${this.basePath1}/${id}`);
+    return this.http.get<Beca>(`${this.basePath1}/becas/${id}`);
   }
   addBeca(beca: Beca) {
     return this.http.post<Beca>(
-      this.basePath1,
+      `${this.basePath1}/becas`,
       beca
     );  
   }
   updateBeca(id: any, beca: Beca) {
-    return this.http.put<Beca>(`${this.basePath1}/${id}`, beca);
+    return this.http.put<Beca>(`${this.basePath1}/becas/${id}`, beca);
   }
   deleteBeca(id: any) {
-    return this.http.delete<Beca>(`${this.basePath1}/${id}`);
+    return this.http.delete<Beca>(`${this.basePath1}/becas/${id}`);
   }
 }

@@ -1,7 +1,8 @@
 .article-meta {
     display: block;
     position: relative;
-    font-weight: 300
+    font-weight: 300;
+    background-color: aqua;
 }
 
 .article-meta img {

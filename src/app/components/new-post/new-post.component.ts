@@ -1,3 +1,5 @@
+import { ProfileService } from './../../services/profile.service';
+import { Profile } from './../../models/profile';
 import { UserService } from './../../services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, UntypedFormControl } from '@angular/forms';
@@ -6,6 +8,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Post } from 'src/app/models/post';
 import { PostService } from 'src/app/services/post.service';
 import { User } from 'src/app/models/user';
+import { __values } from 'tslib';
 
 @Component({
   selector: 'app-new-post',
@@ -20,7 +23,11 @@ export class NewPostComponent implements OnInit {
   tagField = new UntypedFormControl();
   user!: User;
   usr!:User;
+  tagList!: string[];
+  profile!: Profile;
+
   constructor( private postService: PostService,private userService:UserService,
+    private profileService:ProfileService,
     private route: ActivatedRoute,
     private router: Router,
     private fb: UntypedFormBuilder,
@@ -30,43 +37,48 @@ export class NewPostComponent implements OnInit {
     id:[''],
     title: [''],
     description: [''],
-    body: ['']
+    body: [''],
   });
-  this.post.tagList = [];
+  this.tagList = []
 }
   ngOnInit(): void {
     const variable = this.route.snapshot.paramMap.get('id2');
     this.idUser = variable;
     console.log("new-post "+ variable);
-     }
+     
+  }
 
   addTag(){
     // retrieve tag control
     const tag = this.tagField.value;
     // only add tag if it does not exist yet
-    if (this.post.tagList.indexOf(tag) < 0) {
-    this.post.tagList.push(tag);
+    if (this.tagList.indexOf(tag) < 0) {
+    this.tagList.push(tag);
     }
     // clear the input
     this.tagField.reset('');
   }
   removeTag(tagName: string){
-    this.post.tagList = this.post.tagList.filter(tag => tag !== tagName);
+    this.tagList = this.tagList.filter(tag => tag !== tagName);
   }
   submitForm(){
+
+    this.profileService.getProfileId(this.idUser).subscribe((data)=>
+    {this.profile = data;});
     
     const post:Post = {
       id: 0,
-      slug: this.postForm.get('title')!.value,
+      slug: "post-"+this.postForm.get('title')!.value,
       title: this.postForm.get('title')!.value,
       description: this.postForm.get('description')!.value,
       body: this.postForm.get('body')!.value,
-      tagList: this.post.tagList,
+      tagList: this.stringArrayTOString(this.tagList),
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString(),
-      favorited: false,
+      favorite: false,
       favoritesCount: 0,
-      authorId:  Number(this.idUser)
+      author: this.profile,
+      published: true,
     }
 
     // update the model
@@ -94,5 +106,17 @@ export class NewPostComponent implements OnInit {
   updatePost(values: Object){
     Object.assign(this.post, values);
   }
+  stringArrayTOString(tagList:string[]) : string{
+    let lista:string = "";
 
+    for(var i=0; i< tagList.length; i++) {
+
+        if(i!=0) {
+          lista += ",";
+        }
+        lista += tagList[i];
+        i++;
+    }
+    return lista;
+  }
 }

@@ -1,8 +1,8 @@
-import { PostService } from './../../services/post.service';
-import { UserService } from './../../services/user.service';
+import { ProfileService } from './../../services/profile.service';
+
 import { Component, Input, OnInit } from '@angular/core';
 import { Post } from 'src/app/models/post';
-import { User } from 'src/app/models/user';
+import { Profile } from 'src/app/models/profile';
 
 @Component({
   selector: 'app-meta-post',
@@ -11,22 +11,19 @@ import { User } from 'src/app/models/user';
 })
 export class MetaPostComponent implements OnInit {
 
-  user!:User;
-  author: any;
-
+  nombreCompleto !: string;
+  profile!: Profile;
   @Input()
   post!: Post;
-  
-  constructor(private userService:UserService, private postService:PostService){}
-  ngOnInit():void{
 
-    this.postService.getPostId(1).subscribe((data) => {
-      this.post.updatedAt;
-    })
+  constructor(private profileService: ProfileService,){
+  }
 
-    this.userService.getUserId(1).subscribe((data) => {
-      this.user = data;
-      this.author = this.user.name + " "+ this.user.lastname;
-    })
+  ngOnInit(): void{
+  this.profileService.getProfileId(this.post.author.id)
+  .subscribe((data) => {
+      this.profile = data;
+      this.nombreCompleto = this.profile.name + ' ' + this.profile.lastName;
+    });
   }
 }

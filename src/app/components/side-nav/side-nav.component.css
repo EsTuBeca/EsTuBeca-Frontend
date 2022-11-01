@@ -26,16 +26,18 @@ mat-icon {
     height: 120px;
 }
 .user .name {
-    color: white;
+    color: rgb(0, 0, 0);
     font-weight: bold;
+    font-family: 'Be Vietnam Pro', sans-serif;
 }
 .user .mail {
     margin-top: -10px;
-    color: #D8843B;
+    color: #1b1a19;
     font-style: italic;
+    font-family: 'Be Vietnam Pro', sans-serif;
 }
 .menu-head {
-    color: #D8843B;
+    color: #000000;
     text-transform: uppercase;
     font-weight: 900;
     margin-left: 0px;

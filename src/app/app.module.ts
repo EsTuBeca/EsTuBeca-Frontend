@@ -27,6 +27,7 @@ import { MetaPostComponent } from './components/meta-post/meta-post.component';
 import { FavoriteButtonComponent } from './components/favorite-button/favorite-button.component';
 import { AddBecaComponent } from './components/add-beca/add-beca.component';
 import { EditBecaComponent } from './components/edit-beca/edit-beca.component';
+import { RegisterProfileComponent } from './components/register-profile/register-profile.component';
 
 
 @NgModule({
@@ -51,6 +52,7 @@ import { EditBecaComponent } from './components/edit-beca/edit-beca.component';
     FavoriteButtonComponent,
     AddBecaComponent,
     EditBecaComponent,
+    RegisterProfileComponent,
   ],
   imports: [
     BrowserModule,

@@ -15,10 +15,12 @@ import { CursosComponent } from './components/cursos/cursos.component';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { BecasDetalleComponent } from './components/becas-detalle/becas-detalle.component';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
+import { RegisterProfileComponent } from './components/register-profile/register-profile.component';
 
 const routes: Routes = [
   {path:'register-user', component: RegisterUserComponent},
   {path:'edit-user/:id', component: EditUserComponent},
+  {path:'register-profile', component: RegisterProfileComponent},
   {path:'', component: LoginUserComponent},
  // {path:'/:id', component: LoginUserComponent}, 
   {path:'',redirectTo:'',pathMatch:'full'},

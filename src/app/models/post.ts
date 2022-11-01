@@ -1,4 +1,4 @@
-import { User } from "./user";
+import { Profile } from "./profile";
 
 
 export interface Post{
@@ -7,10 +7,11 @@ export interface Post{
   title: string;
   description: string;
   body: string;
-  tagList: string[];
+  tagList: string;
   createdAt: string;
   updatedAt: string;
-  favorited: boolean;
+  favorite: boolean;
   favoritesCount: number;
-  authorId: number;
+  author: Profile;
+  published:boolean;
 }

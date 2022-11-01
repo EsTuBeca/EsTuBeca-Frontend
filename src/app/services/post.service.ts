@@ -1,32 +1,35 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from './../../environments/environment.prod';
 import { Post } from '../models/post';
+import { Observable } from 'rxjs';
+import { PostListConfig } from '../models/post-list-config';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PostService {
-  basePath:string=environment.posts_url;
+  basePath:string=environment.api_url;
   constructor(private http: HttpClient) { }
   
   getPosts() {
-    return this.http.get<Post[]>(this.basePath);
+    return this.http.get<Post[]>(`${this.basePath}/posts`);
   }
 
   getPostId(id:any){
-    return this.http.get<Post>(`${this.basePath}/${id}`);
+    return this.http.get<Post>(`${this.basePath}/posts/${id}`);
   }
   addPost(post: Post) {
     return this.http.post<Post>(
-      this.basePath,
+      `${this.basePath}/posts`,
       post
     );  
   }
   updatePost(id: any, post: Post) {
-    return this.http.put<Post>(`${this.basePath}/${id}`, post);
+    return this.http.put<Post>(`${this.basePath}/posts/${id}`, post);
   }
   deletePost(id: any) {
-    return this.http.delete<Post>(`${this.basePath}/${id}`);
+    return this.http.delete<Post>(`${this.basePath}/posts/${id}`);
   }
+ 
 }

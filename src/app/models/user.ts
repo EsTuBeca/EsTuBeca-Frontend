@@ -1,4 +1,4 @@
-export interface User{
+/*export interface User{
     id: number;
     name:string;
     lastname:string;
@@ -7,4 +7,14 @@ export interface User{
     email:string;
     username:string;
     password:string;
+}*/
+
+import { Role } from "./role";
+
+export interface User{
+    id: number;
+    email:string;
+    password:string;
+    username:string;
+    role: Role;
 }

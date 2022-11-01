@@ -23,7 +23,7 @@ export class FavoriteButtonComponent  {
   toggleFavorite() {
     this.isSubmitting = true;
 
-    if (!this.post.favorited) {
+    if (!this.post.favorite) {
 
       this.isSubmitting = false;
       this.toggle.emit(true);
