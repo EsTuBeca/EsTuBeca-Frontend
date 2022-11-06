@@ -6,6 +6,9 @@ import { User } from 'src/app/models/user';
 import { HttpClient } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { UserService } from 'src/app/services/user.service';
+import { TagService } from 'src/app/services/tag.service';
+import { PostListConfig } from 'src/app/models/post-list-config';
+import { Etiqueta } from 'src/app/models/etiqueta';
 @Component({
   selector: 'app-foro',
   templateUrl: './foro.component.html',
@@ -17,15 +20,35 @@ export class ForoComponent implements OnInit {
   basePath:string=environment.basePath;
   constructor(  private userService:UserService,
     private snackBar: MatSnackBar,
-    private router:Router,
+    private router: Router,
+    private tagService: TagService,
     private route:ActivatedRoute,
     private http : HttpClient) { }
 
+    isAuthenticated!: boolean;
+    listConfig: PostListConfig = {
+      type: 'all',
+      filters: {}
+    };
+    tags!: Etiqueta[];
+    tagsLoaded = false;
+
   ngOnInit(): void {
-    const variable = this.route.snapshot.paramMap.get('id');
-     console.log("foro 1"+variable)
      const variable2 = this.route.snapshot.paramMap.get('id2');
-     console.log("foro 2 "+variable2)
+     console.log("foro 2 "+variable2);
+
+     this.setListTo('all');
+
+     this.tagService.getAll()
+     .subscribe((data) => {
+       this.tags = data;
+       this.tagsLoaded = true;
+     });
+
+  }
+  setListTo(type: string = '', filters: Object = {}) {
+    // Otherwise, set the list object
+    this.listConfig = {type: type, filters: filters};
   }
   
 }

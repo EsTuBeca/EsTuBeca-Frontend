@@ -2,8 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from './../../environments/environment.prod';
 import { Post } from '../models/post';
-import { Observable } from 'rxjs';
-import { PostListConfig } from '../models/post-list-config';
+
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +14,14 @@ export class PostService {
   getPosts() {
     return this.http.get<Post[]>(`${this.basePath}/posts`);
   }
-
+  getPostsReverse() {
+    return this.http.get<Post[]>(`${this.basePath}/posts/reverse`);
+  }
+  countPosts() {
+    var count = 0;
+    this.getPosts().forEach(post => {count ++;});
+    return count;
+  }
   getPostId(id:any){
     return this.http.get<Post>(`${this.basePath}/posts/${id}`);
   }
@@ -31,5 +37,7 @@ export class PostService {
   deletePost(id: any) {
     return this.http.delete<Post>(`${this.basePath}/posts/${id}`);
   }
- 
+
+
+    
 }

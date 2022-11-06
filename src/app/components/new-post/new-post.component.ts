@@ -24,6 +24,7 @@ export class NewPostComponent implements OnInit {
   user!: User;
   usr!:User;
   tagList!: string[];
+  lista: string = "";
   profile!: Profile;
 
   constructor( private postService: PostService,private userService:UserService,
@@ -46,6 +47,8 @@ export class NewPostComponent implements OnInit {
     this.idUser = variable;
     console.log("new-post "+ variable);
      
+    this.profileService.getProfileId(this.idUser).subscribe((data)=>
+    {this.profile = data;});
   }
 
   addTag(){
@@ -62,17 +65,15 @@ export class NewPostComponent implements OnInit {
     this.tagList = this.tagList.filter(tag => tag !== tagName);
   }
   submitForm(){
-
-    this.profileService.getProfileId(this.idUser).subscribe((data)=>
-    {this.profile = data;});
-    
+    const variable = this.route.snapshot.paramMap.get('id2');
+    this.stringArrayTOString(this.tagList);
     const post:Post = {
       id: 0,
-      slug: "post-"+this.postForm.get('title')!.value,
+      slug: this.postForm.get('title')!.value + "-" + Math.floor(Math.random() * 1000) + 1,
       title: this.postForm.get('title')!.value,
       description: this.postForm.get('description')!.value,
       body: this.postForm.get('body')!.value,
-      tagList: this.stringArrayTOString(this.tagList),
+      tagList: this.lista,
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString(),
       favorite: false,
@@ -80,18 +81,16 @@ export class NewPostComponent implements OnInit {
       author: this.profile,
       published: true,
     }
-
-    // update the model
-    this.updatePost(this.postForm.value);
-
-    // post the changes
+    
     this.postService.addPost(post).subscribe({
       next: (data) => {
         this.snackBar.open('El post fue registrado con exito!', '', {
           duration: 3000,
         });
         this.postForm.reset();
-        this.router.navigate(['/homePage',this.idUser,'foro', this.idUser]);
+        this.tagField.reset();
+
+        this.router.navigate(['/homePage',variable]);
       },
       error: (err) => {
         this.snackBar.open('No se logro añadir!', '', {
@@ -103,20 +102,17 @@ export class NewPostComponent implements OnInit {
     
   
   }
-  updatePost(values: Object){
-    Object.assign(this.post, values);
-  }
-  stringArrayTOString(tagList:string[]) : string{
-    let lista:string = "";
 
-    for(var i=0; i< tagList.length; i++) {
+  stringArrayTOString(listaTags:string[]) : void{
+/*
+    for(var i=0; i< listaTags.length; i++) {
 
         if(i!=0) {
-          lista += ",";
+          str += ",";
         }
-        lista += tagList[i];
+        this.lista += listaTags[i];
         i++;
-    }
-    return lista;
+    }*/
+    this.lista = this.tagList.toString();
   }
 }

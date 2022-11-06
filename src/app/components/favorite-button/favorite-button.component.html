@@ -1,7 +1,9 @@
-<button class="btn btn-sm"
- [ngClass]="{ 'disabled' : isSubmitting,
+
+<button mat-icon-button 
+  class="btn-sm"
+ [ngClass]="{ 'disabled' : like,
               'btn-outline-primary': !post.favorite,
               'btn-primary': post.favorite }"
  (click)="toggleFavorite()">
-  <mat-icon >heart</mat-icon> <ng-content></ng-content>
+  <mat-icon>favorite</mat-icon> <ng-content class="count"></ng-content>
 </button>

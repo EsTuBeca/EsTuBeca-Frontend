@@ -39,22 +39,24 @@ export class AddBecaComponent implements OnInit {
   }
 
   saveBeca(): void {
+    const variable = this.route.snapshot.paramMap.get('id2');
     const beca: Beca= {
       id: 0,
       title: this.myForm.get('title')!.value,
       imgUrl: this.myForm.get('imgUrl')!.value,
       description: this.myForm.get('description')!.value,
-      requirements: this.myForm.get('requirements')!.value,
-      telephone: this.myForm.get('telephone')!.value,
-      urlpage: this.myForm.get('urlpage')!.value,
-      benefits:this.myForm.get('benefits')!.value,
+      requisitos: this.myForm.get('requirements')!.value,
+      telefono: this.myForm.get('telephone')!.value,
+      urlPage: this.myForm.get('urlpage')!.value,
+      beneficios:this.myForm.get('benefits')!.value,
+      tagList: "-",
     };
     this.BecaService.addBeca(beca).subscribe({
       next: (data) => {
         this.snackBar.open('La beca fue registrada con exito!', '', {
-          duration: 6000,
+          duration: 3000,
         });
-        this.router.navigate(['becas']);
+        this.router.navigate(['/homePage',variable]);
       },
       error: (err) => {
         console.log(err);

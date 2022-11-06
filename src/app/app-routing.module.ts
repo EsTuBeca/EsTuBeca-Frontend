@@ -1,3 +1,4 @@
+import { PostDetalleComponent } from './components/post-detalle/post-detalle.component';
 import { AddBecaComponent } from './components/add-beca/add-beca.component';
 import { EditBecaComponent } from './components/edit-beca/edit-beca.component';
 import { ListPostsComponent } from './components/list-posts/list-posts.component';
@@ -30,6 +31,7 @@ const routes: Routes = [
   {path:'becas',component: BecasComponent},
   {path:'foro/:id2',component: ForoComponent},
   {path:'new-post',component: NewPostComponent},
+  {path:'foro/:user/post/:post', component: PostDetalleComponent},
   {path:'list-posts',component: ListPostsComponent},
   {path:'avisos',component: AvisosComponent},
   {path:'cursos',component: CursosComponent},

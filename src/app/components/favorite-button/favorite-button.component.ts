@@ -18,20 +18,20 @@ export class FavoriteButtonComponent  {
   @Input()
   post!: Post;
   @Output() toggle = new EventEmitter<boolean>();
-  isSubmitting = false;
+  like = false;
 
   toggleFavorite() {
-    this.isSubmitting = true;
+    this.like = true;
 
     if (!this.post.favorite) {
 
-      this.isSubmitting = false;
+      this.like= false;
       this.toggle.emit(true);
 
 // Otherwise, unfavorite the article
     } else {
 
-      this.isSubmitting = false;
+      this.like = true;
       this.toggle.emit(false);
    
 }

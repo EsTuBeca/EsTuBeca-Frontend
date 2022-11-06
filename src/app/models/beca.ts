@@ -3,9 +3,10 @@ export interface Beca{
     title: string;
     imgUrl: string;
     description: string;
-    requirements:string;
-    telephone: string;
-    urlpage:string;
-    benefits: string;
+    requisitos:string;
+    telefono: string;
+    urlPage:string;
+    beneficios: string;
+    tagList:string;
   
 }

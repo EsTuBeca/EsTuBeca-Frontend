@@ -5,24 +5,29 @@ fieldset {
 	margin: 0;
 	border: 0;
 }
-
+h1{
+	font-family: 'Be Vietnam', sans-serif;
+	font-weight: bold;
+	font-size: 22px;
+  }
 
 .form-group {
-	margin-bottom: 1.1rem
+	margin-bottom: 1.1rem;
+	font-family: 'Be Vietnam', sans-serif;
 }
 
 .form-control {
 	display: block;
 	width: 100%;
-	padding: .5rem .75rem;
-	font-size: 1rem;
 	line-height: 1.25;
 	color: #000000;
 	background-color: #fff;
 	background-image: none;
 	background-clip: padding-box;
 	border: 1px solid rgba(0, 0, 0, .15);
-	border-radius: .25rem
+	border-radius: .25rem;
+	padding: .75rem 1.5rem;
+	border-radius: .3rem
 }
 
 .form-control::-ms-expand {
@@ -173,7 +178,7 @@ select.form-control:not([size]):not([multiple]) {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	margin-top: 50px;
+	margin-top: 40px;
 	justify-content: space-between;
 }
 

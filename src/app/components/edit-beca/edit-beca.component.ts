@@ -40,10 +40,10 @@ export class EditBecaComponent implements OnInit {
         ],
         imgUrl: [this.beca.imgUrl, [Validators.required]],
         description: [this.beca.description],
-        requirements: this.beca.requirements,
-        telephone: this.beca.telephone,
-         urlpage: this.beca.urlpage,
-        benefits:this.beca.benefits,
+        requirements: this.beca.requisitos,
+        telephone: this.beca.telefono,
+         urlpage: this.beca.urlPage,
+        benefits:this.beca.beneficios,
       });
     });
   }
@@ -54,10 +54,11 @@ export class EditBecaComponent implements OnInit {
       title: this.myForm.get('title')!.value,
       imgUrl: this.myForm.get('imgUrl')!.value,
       description: this.myForm.get('description')!.value,
-      requirements: this.myForm.get('requirements')!.value,
-      telephone: this.myForm.get('telephone')!.value,
-      urlpage: this.myForm.get('urlpage')!.value,
-      benefits:this.myForm.get('benefits')!.value,
+      requisitos: this.myForm.get('requirements')!.value,
+      telefono: this.myForm.get('telephone')!.value,
+      urlPage: this.myForm.get('urlpage')!.value,
+      beneficios:this.myForm.get('benefits')!.value,
+      tagList:"",
     };
     this.becaService
       .updateBeca(this.idBeca, beca)
