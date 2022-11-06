@@ -1,5 +1,5 @@
 mat-sidenav {
-    background: #F1CB9A;
+    background: #f3e5d3;
     width: 230px;
     height: 100%;
 }
@@ -11,7 +11,7 @@ mat-sidenav-content .main {
     margin-left: 30px;
 }
 mat-toolbar {
-    background-color: #D8843B;
+    background-color: #d8843b;
     justify-content: space-between;
 }
 mat-toolbar mat-icon {
@@ -33,4 +33,5 @@ img {
     margin-right: 1000px;
     align-items: left;
 }
+
 

@@ -1,10 +1,10 @@
 import { Post } from "./post";
 import { Profile } from "./profile";
 
-export interface Role{
+export interface Comment{
     id: number;
     body:string;
-    profile: Profile;
     createdAt:string;
+    autor: Profile; 
     post:Post;
 }
