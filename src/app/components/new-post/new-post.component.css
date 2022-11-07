@@ -271,3 +271,12 @@ select.form-control:not([size]):not([multiple]) {
     padding-left: 1em;
     border-radius: 9rem;
 }
+.tag-list mat-icon{
+	cursor : pointer;
+}
+.mda-form-msg{
+	font-family: 'Be Vietnam', sans-serif;
+	font-size: 15px;
+	color: #e72f2f;
+	padding-bottom: 15px;
+}

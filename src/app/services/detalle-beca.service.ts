@@ -1,18 +1,43 @@
 import { DetalleBeca } from './../models/detalle-beca';
 import { Injectable } from '@angular/core';
-import { environment } from './../../environments/environment.prod';
-import { Beca } from '../models/beca';
-import { HttpClient, HttpParams } from '@angular/common/http';
+
 @Injectable({
   providedIn: 'root'
 })
 export class DetalleBecaService {
 
-  basePath1:string=environment.api_url;
-  getBecaId(id:any){
-    return this.http.get<Beca>(`${this.basePath1}/becas/${id}`);
+  detalles: DetalleBeca[] = [
+    {
+      name:'Beca 18',
+      benefits: 'Estudios gratis',
+      description: 'Be happy',
+      requirements:'Aprobar el examen',
+      telephone: '99999999',
+      urlpage:'pronabec.com',
+    },
+    {
+      name:'Beca 19',
+      benefits: 'Estudios gratis',
+      description: 'Be happy',
+      requirements:'Aprobar el examen',
+      telephone: '99999999',
+      urlpage:'pronabec.com',
+    },
+    {
+      name:'Beca 20',
+      benefits: 'Estudios gratis',
+      description: 'Be happy',
+      requirements:'Aprobar el examen',
+      telephone: '99999999',
+      urlpage:'pronabec.com',
+    }
+  ]
+  
+  constructor() { }
+  public getDetalleBeca(){
+    return this.detalles.slice();
   }
-  constructor(private http: HttpClient) { }
- 
-
+  public addDetallaBeca(detalleBeca:DetalleBeca){
+    this.detalles.unshift(detalleBeca);
+  }
 }

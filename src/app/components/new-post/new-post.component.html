@@ -4,31 +4,58 @@
         <h1>Agrega un nuevo post!</h1>
           <form [formGroup]="postForm">
               <fieldset>  
+                
               <fieldset class="form-group">
+                <div
+                *ngIf="
+                  postForm.get('title')?.hasError('required') &&
+                  postForm.get('title')?.touched
+                "
+              >
+                <span class="mda-form-msg"> * Este campo es obligatorio </span>
+              </div>
                 <input class="form-control"
                   style="font-family: 'Be Vietnam', sans-serif; font-size: 20px;"
                   formControlName="title"
                   type="text"
                   placeholder="Título" />
               </fieldset>
+            
   
               <fieldset class="form-group">
+                <div
+                *ngIf="
+                  postForm.get('description')?.hasError('required') &&
+                  postForm.get('description')?.touched
+                "
+              >
+                <span class="mda-form-msg"> * Este campo es obligatorio </span>
+              </div>
                 <input class="form-control"
                   style="font-family: 'Be Vietnam', sans-serif;font-size: 17px;"
                   formControlName="description"
                   type="text"
                   placeholder="Descripción" />
               </fieldset>
-  
+             
               <fieldset class="form-group">
+                <div
+                *ngIf="
+                  postForm.get('body')?.hasError('required') &&
+                  postForm.get('body')?.touched
+                "
+              >
+                <span class="mda-form-msg"> * Este campo es obligatorio </span>
+              </div>
                 <textarea class="form-control"
                   style="font-family: 'Be Vietnam', sans-serif;font-size: 17px;"
                   formControlName="body"
                   rows="8"
-                  placeholder="Escribe aquí el contenido del post.">
+                  placeholder="Escribe aquí el contenido del post">
                 </textarea>
               </fieldset>
-  
+             
+
               <fieldset class="form-group">
                 <input class="form-control"
                   style="font-family: 'Be Vietnam', sans-serif;font-size: 17px;"
@@ -47,7 +74,9 @@
                 </div>
               </fieldset>
           
-              <button class="btn-primary" type="button" (click)="submitForm()">
+              <button class="btn-primary" type="button" 
+              [disabled]="postForm.invalid"
+              (click)="submitForm()">
                <span>Publicar</span>
               </button>
   

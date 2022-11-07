@@ -16,6 +16,9 @@ export class MetaPostComponent implements OnInit {
   @Input()
   post!: Post;
 
+  @Input()
+  detalle:boolean = false;
+
   constructor(private profileService: ProfileService,){
   }
 

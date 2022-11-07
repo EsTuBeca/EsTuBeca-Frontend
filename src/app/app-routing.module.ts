@@ -19,6 +19,7 @@ import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { RegisterProfileComponent } from './components/register-profile/register-profile.component';
 import { AddCursoComponent } from './components/add-curso/add-curso.component';
 import { EditCursoComponent } from './components/edit-curso/edit-curso.component';
+
 const routes: Routes = [
   {path:'register-user', component: RegisterUserComponent},
   {path:'edit-user/:id', component: EditUserComponent},
@@ -28,7 +29,7 @@ const routes: Routes = [
   {path:'',redirectTo:'',pathMatch:'full'},
   {path:'homePage/:id',component: HomePageComponent,
   children : [
-  {path:'premium',component: HaztePremiumComponent},
+  {path:'premium/:id',component: HaztePremiumComponent},
   {path:'becas/:id3',component: BecasComponent},
   {path:'cursos/:id4',component: CursosComponent},
   {path:'foro/:id2',component: ForoComponent},

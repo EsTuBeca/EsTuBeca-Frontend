@@ -32,13 +32,14 @@ export class ForoComponent implements OnInit {
     };
     tags!: Etiqueta[];
     tagsLoaded = false;
+    carga:boolean = true;
 
   ngOnInit(): void {
      const variable2 = this.route.snapshot.paramMap.get('id2');
      console.log("foro 2 "+variable2);
 
      this.setListTo('all');
-
+ 
      this.tagService.getAll()
      .subscribe((data) => {
        this.tags = data;
@@ -46,6 +47,50 @@ export class ForoComponent implements OnInit {
      });
 
   }
+
+addTagsList():void{
+  
+  const tag1:Etiqueta = { id: 1, name:"ingles"};
+  const tag2:Etiqueta = { id: 2, name:"extranjero"};
+  const tag3:Etiqueta = { id: 3, name:"beca"};
+  const tag4:Etiqueta = { id: 4, name:"curso"}
+
+ this.tagService.addTag(tag1).subscribe({
+   next: (data) => {
+      this.snackBar.open('Se agrego el tag', '', {
+       duration: 2000,  });
+   },
+   error: (err) => {
+     console.log(err);
+   },
+ });
+ this.tagService.addTag(tag2).subscribe({
+   next: (data) => {
+   },
+   error: (err) => {
+     console.log(err);
+   },
+ }); 
+  this.tagService.addTag(tag3).subscribe({
+   next: (data) => {
+    
+   },
+   error: (err) => {
+     console.log(err);
+   },
+ });
+ this.tagService.addTag(tag4).subscribe({
+   next: (data) => {
+    this.snackBar.open('Se agrego el tag', '', {
+      duration: 2000,  });
+   },
+   error: (err) => {
+     console.log(err);
+   },
+ });
+ this.carga = false;
+}
+
   setListTo(type: string = '', filters: Object = {}) {
     // Otherwise, set the list object
     this.listConfig = {type: type, filters: filters};

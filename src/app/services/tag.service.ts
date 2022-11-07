@@ -14,5 +14,11 @@ export class TagService {
   getAll() {
     return this.http.get<Etiqueta[]>(`${this.basePath}/etiquetas`);
   }
+  addTag(tag: Etiqueta) {
+    return this.http.post<Etiqueta>(
+      `${this.basePath}/etiquetas`,
+      tag
+    );  
+  }
 
 }

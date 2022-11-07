@@ -1,0 +1,30 @@
+<div class="card">
+    <div class="card-block">
+      <p class="card-text">
+        {{ comentario.body }}
+      </p>
+    </div>
+    <div class="card-footer">
+      <a class="comment-author">
+        <img src="../../../assets/img/logo-fondo.png" class="comment-author-img" />
+      </a>
+      &nbsp;
+      <a class="comment-author">
+        {{ nombre }}
+      </a>
+      <span class="date-posted">
+        {{ comentario.createdAt | date: 'longDate' }}
+      </span>
+      <span class="mod-options" 
+        [hidden]="!canModify">
+        <a class="btn-icon">
+            <mat-icon style="color: #e15639" >edit</mat-icon>
+        </a>
+        <a (click)="deleteComentario(comentario.id)"
+          class="btn-icon"
+        >
+          <mat-icon style="color: #0e124b">delete</mat-icon>
+        </a>
+      </span>
+    </div>
+  </div>

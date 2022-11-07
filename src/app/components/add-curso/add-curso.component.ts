@@ -1,7 +1,7 @@
 import { Curso } from './../../models/curso';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { CursoService } from './../../services/curso.service';
+import { CursoService } from 'src/app/services/curso.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
@@ -17,7 +17,7 @@ export class AddCursoComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private CursoService: CursoService,
+    private cursoService: CursoService,
     private snackBar: MatSnackBar,
     private router: Router,
     public route:ActivatedRoute,
@@ -47,7 +47,7 @@ export class AddCursoComponent implements OnInit {
       finished: false,
       cost: this.myForm.get('cost')!.value,
     };
-    this.CursoService.addCurso(curso).subscribe({
+    this.cursoService.addCurso(curso).subscribe({
       next: (data) => {
         this.snackBar.open('El curso fue registrado con exito!', '', {
           duration: 3000,

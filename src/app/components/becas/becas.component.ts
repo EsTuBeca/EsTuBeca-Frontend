@@ -6,7 +6,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute} from '@angular/router';
 import { environment } from './../../../environments/environment';
 import { MatTableDataSource } from '@angular/material/table';
-import { SearchPipe } from '../shared/search.pipe';
+
 @Component({
   selector: 'app-becas',
   templateUrl: './becas.component.html',

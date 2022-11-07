@@ -21,6 +21,7 @@ export class ListPostsComponent implements OnInit {
   currentPage = 1;
   totalPages: Array<number> = [1];
   count !: number;
+  
 
   ngOnInit(): void {
     this.count = this.postService.countPosts();

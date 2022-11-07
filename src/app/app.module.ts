@@ -29,10 +29,9 @@ import { AddBecaComponent } from './components/add-beca/add-beca.component';
 import { EditBecaComponent } from './components/edit-beca/edit-beca.component';
 import { RegisterProfileComponent } from './components/register-profile/register-profile.component';
 import { PostDetalleComponent } from './components/post-detalle/post-detalle.component';
-import { CommentComponent } from './components/comment/comment.component';
+import { ListCommentsComponent } from './components/list-comments/list-comments.component';
 import { AddCursoComponent } from './components/add-curso/add-curso.component';
 import { EditCursoComponent } from './components/edit-curso/edit-curso.component';
-import { SearchPipe } from './components/shared/search.pipe';
 
 
 @NgModule({
@@ -59,10 +58,9 @@ import { SearchPipe } from './components/shared/search.pipe';
     EditBecaComponent,
     RegisterProfileComponent,
     PostDetalleComponent,
-    CommentComponent,
+    ListCommentsComponent,
     AddCursoComponent,
     EditCursoComponent,
-    SearchPipe,
   ],
   imports: [
     BrowserModule,

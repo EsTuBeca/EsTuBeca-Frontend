@@ -2,7 +2,7 @@ import { ProfileService } from './../../services/profile.service';
 import { Profile } from './../../models/profile';
 import { UserService } from './../../services/user.service';
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup, UntypedFormControl } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, UntypedFormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Post } from 'src/app/models/post';
@@ -18,6 +18,7 @@ import { __values } from 'tslib';
 
 export class NewPostComponent implements OnInit {
   idUser: any;
+  userId:any;
   post: Post = {} as Post;
   postForm: UntypedFormGroup;
   tagField = new UntypedFormControl();
@@ -36,9 +37,10 @@ export class NewPostComponent implements OnInit {
 
   this.postForm = this.fb.group({
     id:[''],
-    title: [''],
-    description: [''],
-    body: [''],
+    title: ['',[Validators.required]],
+    description: ['',[Validators.required]],
+    body: ['',[Validators.required]],
+    tagList: [''],
   });
   this.tagList = []
 }
@@ -46,6 +48,7 @@ export class NewPostComponent implements OnInit {
     const variable = this.route.snapshot.paramMap.get('id2');
     this.idUser = variable;
     console.log("new-post "+ variable);
+    this.userId = this.route.snapshot.paramMap.get('user');
      
     this.profileService.getProfileId(this.idUser).subscribe((data)=>
     {this.profile = data;});
@@ -90,7 +93,8 @@ export class NewPostComponent implements OnInit {
         this.postForm.reset();
         this.tagField.reset();
 
-        this.router.navigate(['/homePage',variable]);
+        window.location.reload();
+
       },
       error: (err) => {
         this.snackBar.open('No se logro añadir!', '', {
@@ -104,15 +108,7 @@ export class NewPostComponent implements OnInit {
   }
 
   stringArrayTOString(listaTags:string[]) : void{
-/*
-    for(var i=0; i< listaTags.length; i++) {
-
-        if(i!=0) {
-          str += ",";
-        }
-        this.lista += listaTags[i];
-        i++;
-    }*/
     this.lista = this.tagList.toString();
   }
+
 }

@@ -45,7 +45,7 @@
         
         <button mat-button [routerLink]="['/homePage',userId,'becas',userId,'detalle',beca.id]">Ver requisitos</button>
          
-        <a class="pointer" [routerLink]="['/homePage',userId,'edit',userId,beca.id]" style="color: #1878b0">
+        <a class="pointer" [routerLink]="['/homePage',userId,'edit',userId,beca.id]" style="color: #1878b0; cursor: pointer">
           <mat-icon>edit</mat-icon>
         </a>
         <a
@@ -53,7 +53,7 @@
         class="pointer"
         style="color: #e15639"
       >
-        <mat-icon>delete</mat-icon>
+        <mat-icon style="cursor: pointer">delete</mat-icon>
       </a>
       </mat-card-actions>
     </mat-card>

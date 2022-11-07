@@ -36,13 +36,13 @@
           
           <button mat-button [routerLink]="['/homePage',userId,'cursos',userId,'detalle',curso.id]">Ver más</button>
            
-          <a class="pointer" [routerLink]="['/homePage',userId,'editcurso',userId,curso.id]" style="color: #1878b0">
+          <a class="pointer" [routerLink]="['/homePage',userId,'editcurso',userId,curso.id]" style="color: #1878b0; cursor: pointer;">
             <mat-icon>edit</mat-icon>
           </a>
           <a
           (click)="deleteCurso(curso.id)"
           class="pointer"
-          style="color: #e15639"
+          style="color: #e15639;cursor: pointer;"
         >
           <mat-icon>delete</mat-icon>
         </a>
