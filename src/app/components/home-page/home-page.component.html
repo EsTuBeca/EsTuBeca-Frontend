@@ -8,19 +8,12 @@
                 <mat-toolbar>
                     <mat-icon (click)="sidebar.toggle()">menu</mat-icon>
                     <!-- <img src="./assets/LogoIHC.png"> -->
-                    <button mat-button class="menu-button-two" [routerLink]="['/edit-user',route.snapshot.paramMap.get('id')]" aria-hidden="false">
+                    <button mat-button class="menu-button" [routerLink]="['/edit-user',route.snapshot.paramMap.get('id')]">
                         <span>Editar perfil</span>
                         <span class="imagen">
                             <mat-icon>person_pin</mat-icon>
                         </span>
                     </button>
-                    <button mat-button class="menu-button" [routerLink]="['/']" aria-hidden="false">
-                        <span>Cerrar sesión</span>
-                        <span class="imagen">
-                            <mat-icon>exit_to_app</mat-icon>
-                        </span>
-                    </button>
-                    
                     
                 </mat-toolbar>
             </div>

@@ -28,4 +28,8 @@ export class BecaService {
   deleteBeca(id: any) {
     return this.http.delete<Beca>(`${this.basePath1}/becas/${id}`);
   }
+  getBecaByTitle(title: any) {
+    const endpoint = `${this.basePath1}/becas/filter/${title}`;
+    return this.http.get<Beca>(endpoint);
+  }
 }

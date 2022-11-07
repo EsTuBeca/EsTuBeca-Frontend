@@ -30,6 +30,9 @@ import { EditBecaComponent } from './components/edit-beca/edit-beca.component';
 import { RegisterProfileComponent } from './components/register-profile/register-profile.component';
 import { PostDetalleComponent } from './components/post-detalle/post-detalle.component';
 import { CommentComponent } from './components/comment/comment.component';
+import { AddCursoComponent } from './components/add-curso/add-curso.component';
+import { EditCursoComponent } from './components/edit-curso/edit-curso.component';
+import { SearchPipe } from './components/shared/search.pipe';
 
 
 @NgModule({
@@ -57,6 +60,9 @@ import { CommentComponent } from './components/comment/comment.component';
     RegisterProfileComponent,
     PostDetalleComponent,
     CommentComponent,
+    AddCursoComponent,
+    EditCursoComponent,
+    SearchPipe,
   ],
   imports: [
     BrowserModule,

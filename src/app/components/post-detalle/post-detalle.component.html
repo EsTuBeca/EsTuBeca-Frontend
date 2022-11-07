@@ -1,7 +1,7 @@
 <div class="article-page">
 
     <div class="banner">
-      <div class="container"  >
+      <div class="container">
         <h1>{{ post.title }}</h1>
   
         <div class="article-actions">
@@ -15,7 +15,7 @@
       
                 <button class="btn btn-sm btn-outline-danger"
                   [ngClass]="{disabled: isDeleting}"
-                  (click)="deletePost(post.id)">
+                  (click)="deleteArticle()">
                   <i class="ion-trash-a"></i> Delete Article
                 </button>
               </span>
@@ -58,23 +58,23 @@
       <div class="row">
         <div class="col-xs-12 col-md-8 offset-md-2">
   
-         <form class="card form-group" [formGroup]="commentForm">
+         <form class="card comment-form" (ngSubmit)="addComment()">
               <fieldset [disabled]="isSubmitting">
                 <div class="card-block">
                   <textarea class="form-control"
                     placeholder="Write a comment..."
                     rows="3"
-                    formControlName="body"
+                    [formControl]="commentControl"
                   ></textarea>
                 </div>
                 <div class="card-footer">
                   <img src="../../../assets/LogoIHC.png" class="comment-author-img" />
-                  <button class="btn btn-sm btn-primary" type="submit" (click)="addComment()">
+                  <button class="btn btn-sm btn-primary" type="submit">
                    Post Comment
                   </button>
                 </div>
               </fieldset>
-        </form>
+            </form>
   
         </div>
       </div>
