@@ -1,6 +1,23 @@
-.titulo{
 
-    font-size: 50px;
-    margin-top: 35px;
-
+.title{
+    font-size: xx-large;
+    font-weight: bolder;
+    line-height: 3;
+    text-align: center;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    text-decoration: underline;
 }
+
+.alinear .cuadrito{
+    background-color: aqua;
+    border-radius: 5%;
+    height: max-content;
+    width:max-content;
+}
+.alinear {
+    text-align: justify;
+    margin-top: 20px;
+    font-size: medium;
+    font-family: 'Be Vietnam Pro', sans-serif;
+
+  }

@@ -18,3 +18,18 @@
 .container>*{
   flex: 1 1 380px;
 }
+.alinear {
+  text-align: center;
+  margin-top: 20px;
+  font-size: x-large;
+  font-family: 'Be Vietnam Pro', sans-serif;
+  font-weight: 600;
+  text-decoration: underline;
+}
+.mat-raised-button{
+  
+ background-color: #D8843B; 
+  color: antiquewhite;
+  margin-right: 5%;
+  font-weight: 600;
+}
