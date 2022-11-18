@@ -70,7 +70,7 @@ export class EditUserComponent implements OnInit {
       lastName: this.myForm.get('lastName')!.value,
       phone: this.myForm.get('phone')!.value,
       grade: this.myForm.get('grade')!.value,
-      imgUrl: this.profile.imgUrl,
+      img: this.profile.img,
     };
     this.userService.updateUser(this.idUser, usuario).subscribe({
       next: (data) => {
