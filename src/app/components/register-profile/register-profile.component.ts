@@ -85,6 +85,7 @@ export class RegisterProfileComponent implements OnInit {
         }
         const uploadImageData = new FormData();
         uploadImageData.append('picture', perfil.img, perfil.img.name);
+        uploadImageData.append('id', perfil.user.id.toString());
         uploadImageData.append('userId', perfil.user.id.toString())
         uploadImageData.append('name', perfil.name)
         uploadImageData.append('lastname', perfil.lastName)

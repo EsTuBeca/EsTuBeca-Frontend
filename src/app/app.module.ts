@@ -30,6 +30,7 @@ import { EditBecaComponent } from './components/edit-beca/edit-beca.component';
 import { RegisterProfileComponent } from './components/register-profile/register-profile.component';
 import { PostDetalleComponent } from './components/post-detalle/post-detalle.component';
 import { CommentComponent } from './components/comment/comment.component';
+import { LandingPageComponent } from './components/landing-page/landing-page.component';
 
 
 @NgModule({
@@ -57,6 +58,7 @@ import { CommentComponent } from './components/comment/comment.component';
     RegisterProfileComponent,
     PostDetalleComponent,
     CommentComponent,
+    LandingPageComponent,
   ],
   imports: [
     BrowserModule,
