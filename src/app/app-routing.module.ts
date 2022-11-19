@@ -1,3 +1,4 @@
+import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { PostDetalleComponent } from './components/post-detalle/post-detalle.component';
 import { AddBecaComponent } from './components/add-beca/add-beca.component';
 import { EditBecaComponent } from './components/edit-beca/edit-beca.component';
@@ -24,8 +25,8 @@ const routes: Routes = [
   {path:'register-user', component: RegisterUserComponent},
   {path:'edit-user/:id', component: EditUserComponent},
   {path:'register-profile', component: RegisterProfileComponent},
-  {path:'', component: LoginUserComponent},
- // {path:'/:id', component: LoginUserComponent}, 
+  {path:'', component: LandingPageComponent},
+  {path:'login-user', component: LoginUserComponent}, 
   {path:'',redirectTo:'',pathMatch:'full'},
   {path:'homePage/:id',component: HomePageComponent,
   children : [

@@ -29,6 +29,8 @@ import { AddBecaComponent } from './components/add-beca/add-beca.component';
 import { EditBecaComponent } from './components/edit-beca/edit-beca.component';
 import { RegisterProfileComponent } from './components/register-profile/register-profile.component';
 import { PostDetalleComponent } from './components/post-detalle/post-detalle.component';
+import { CommentComponent } from './components/comment/comment.component';
+import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { ListCommentsComponent } from './components/list-comments/list-comments.component';
 import { AddCursoComponent } from './components/add-curso/add-curso.component';
 import { EditCursoComponent } from './components/edit-curso/edit-curso.component';
@@ -58,6 +60,8 @@ import { EditCursoComponent } from './components/edit-curso/edit-curso.component
     EditBecaComponent,
     RegisterProfileComponent,
     PostDetalleComponent,
+    CommentComponent,
+    LandingPageComponent,
     ListCommentsComponent,
     AddCursoComponent,
     EditCursoComponent,

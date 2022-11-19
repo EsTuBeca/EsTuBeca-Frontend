@@ -9,7 +9,7 @@ import { ReadVarExpr } from '@angular/compiler';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ProfileService } from 'src/app/services/profile.service';
 import { Profile } from 'src/app/models/profile';
-
+ 
 @Component({
   selector: 'app-edit-user',
   templateUrl: './edit-user.component.html',
@@ -20,6 +20,8 @@ export class EditUserComponent implements OnInit {
   user!: User;
   profile !: Profile;
   idUser: any;
+  selectedFile: any;
+  nameImg: string = '';
   public imgfiles: any = [];
   public previewImg!: string;
 
@@ -49,6 +51,7 @@ export class EditUserComponent implements OnInit {
         email:[this.user.email,[Validators.required,Validators.email]],
         password:[this.user.password,[Validators.required]],
         username:[this.user.username,[Validators.required]],
+        img:[this.profile.picture,[Validators.required]],
       });
     })
         
@@ -70,8 +73,15 @@ export class EditUserComponent implements OnInit {
       lastName: this.myForm.get('lastName')!.value,
       phone: this.myForm.get('phone')!.value,
       grade: this.myForm.get('grade')!.value,
-      imgUrl: this.profile.imgUrl,
+      picture:this.selectedFile,
     };
+    const uploadImageData = new FormData();
+        uploadImageData.append('picture', perfil.picture, perfil.picture.name);
+        uploadImageData.append('userId', perfil.id.toString());
+        uploadImageData.append('name', perfil.name);
+        uploadImageData.append('lastname', perfil.lastName);
+        uploadImageData.append('phone', perfil.phone);
+        uploadImageData.append('grade', perfil.grade);
     this.userService.updateUser(this.idUser, usuario).subscribe({
       next: (data) => {
         this.snackBar.open('Actualización de usuario exitosa!', '', {
@@ -85,7 +95,7 @@ export class EditUserComponent implements OnInit {
         console.log(err);
       },
     });
-    this.profileService.updateProfile(this.idUser, perfil).subscribe({
+    this.profileService.updateProfile(this.idUser, uploadImageData).subscribe({
       next: (data) => {
         this.snackBar.open('Actualización del perfil exitoso!', '', {
           duration: 3000,
@@ -131,4 +141,9 @@ export class EditUserComponent implements OnInit {
       return null;
     }
   })
+  onFileChanged(event: any) {
+    this.selectedFile = event.target.files[0];
+    console.log(this.selectedFile);
+    this.nameImg = event.target.files[0].name;
+  }
 }
