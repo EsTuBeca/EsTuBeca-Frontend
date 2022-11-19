@@ -16,7 +16,7 @@ export class ProfileService {
   getProfileId(id:any){
     return this.http.get<Profile>(`${this.basePath}/profiles/${id}`);
   }
-  addProfile(profile: Profile) {
+  addProfile(profile: any) {
     return this.http.post<Profile>(
       `${this.basePath}/profiles`, profile);  
   }
