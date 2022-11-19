@@ -31,6 +31,9 @@ import { RegisterProfileComponent } from './components/register-profile/register
 import { PostDetalleComponent } from './components/post-detalle/post-detalle.component';
 import { CommentComponent } from './components/comment/comment.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
+import { ListCommentsComponent } from './components/list-comments/list-comments.component';
+import { AddCursoComponent } from './components/add-curso/add-curso.component';
+import { EditCursoComponent } from './components/edit-curso/edit-curso.component';
 
 
 @NgModule({
@@ -59,6 +62,9 @@ import { LandingPageComponent } from './components/landing-page/landing-page.com
     PostDetalleComponent,
     CommentComponent,
     LandingPageComponent,
+    ListCommentsComponent,
+    AddCursoComponent,
+    EditCursoComponent,
   ],
   imports: [
     BrowserModule,

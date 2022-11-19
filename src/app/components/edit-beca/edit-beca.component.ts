@@ -11,10 +11,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./edit-beca.component.css']
 })
 export class EditBecaComponent implements OnInit {
-
+  becas:Beca[]=[];
   myForm!: FormGroup;
   beca!: Beca;
   idBeca: any;
+  idUser:any;
 
   constructor(
     private fb: FormBuilder,
@@ -25,30 +26,30 @@ export class EditBecaComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.loadBeca();
-  }
+    const variable1 = this.route.snapshot.paramMap.get('id3');
+    this.idUser = variable1;
+    
+    const variable = this.route.snapshot.paramMap.get('beca');
+    this.idBeca = variable;
 
-  loadBeca() {
-    this.idBeca = this.route.snapshot.paramMap.get('id');
     this.becaService.getBecaId(this.idBeca).subscribe((data) => {
       this.beca = data;
       this.myForm = this.fb.group({
-        id: this.idBeca,
-        title: [
-          this.beca.title,
-          [Validators.required, Validators.maxLength(60)],
-        ],
+        title: [this.beca.title,[Validators.required, Validators.maxLength(60)]],
         imgUrl: [this.beca.imgUrl, [Validators.required]],
         description: [this.beca.description],
         requirements: this.beca.requisitos,
         telephone: this.beca.telefono,
-         urlpage: this.beca.urlPage,
+        urlPage: this.beca.urlPage,
         benefits:this.beca.beneficios,
+        tagList:''
       });
-    });
+    })
   }
 
-  updateBeca(): void {
+  
+  updateBeca() {
+    const variable = this.route.snapshot.paramMap.get('id3');
     const beca: Beca = {
       id: this.idBeca,
       title: this.myForm.get('title')!.value,
@@ -56,7 +57,7 @@ export class EditBecaComponent implements OnInit {
       description: this.myForm.get('description')!.value,
       requisitos: this.myForm.get('requirements')!.value,
       telefono: this.myForm.get('telephone')!.value,
-      urlPage: this.myForm.get('urlpage')!.value,
+      urlPage: this.myForm.get('urlPage')!.value,
       beneficios:this.myForm.get('benefits')!.value,
       tagList:"",
     };
@@ -67,7 +68,7 @@ export class EditBecaComponent implements OnInit {
           this.snackBar.open('La beca fue actualizada con exito!', '', {
             duration: 6000,
           });
-          this.router.navigate(['becas']);
+          this.router.navigate(['/homePage',variable,'becas',variable]);
         },
         error: (err) => {
           console.log(err);

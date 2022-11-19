@@ -15,6 +15,7 @@ export class PreviewPostComponent implements OnInit {
   idPost:any;
   contador:any;
   lista: string[] | undefined;
+  detalle:boolean = false;
   
    constructor(private postService: PostService,private router: Router,
     public route: ActivatedRoute) { }

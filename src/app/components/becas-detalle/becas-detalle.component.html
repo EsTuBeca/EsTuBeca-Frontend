@@ -1,8 +1,21 @@
-<div class="titulo" *ngFor="let detalle of detalles">
+<!-- <div class="titulo" *ngFor="let detalle of detalles">
     <p>{{detalle.name}}</p>
     <p>{{detalle.benefits}}</p>
     <p>{{detalle.description}}</p>
     <p>{{detalle.requirements}}</p>
     <p>{{detalle.telephone}}</p>
     <p>{{detalle.urlpage}}</p>
+</div>  -->
+
+<div class="alinear">
+    <h1 class="title">{{beca.title}}</h1><br/>
+    <div class="alinear">
+        <h2 class="cuadrito">{{beca.beneficios}}</h2>
+        <h2>{{beca.description}}</h2>
+        <h2>{{beca.requisitos}}</h2>
+        <h2>{{beca.telefono}}</h2>
+    </div>
+    <br/>
+    <a href="{{ beca.urlPage }}" target="_blank">this link to know more</a>
 </div>
+

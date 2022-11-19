@@ -2,7 +2,7 @@ import { ProfileService } from './../../services/profile.service';
 import { Profile } from './../../models/profile';
 import { UserService } from './../../services/user.service';
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup, UntypedFormControl } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, UntypedFormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Post } from 'src/app/models/post';
@@ -24,7 +24,7 @@ export class NewPostComponent implements OnInit {
   tagField = new UntypedFormControl();
   user!: User;
   usr!:User;
-  //tagList!: string[];
+  tagList!: string[];
   lista: string = "";
   profile!: Profile;
 
@@ -37,12 +37,12 @@ export class NewPostComponent implements OnInit {
 
   this.postForm = this.fb.group({
     id:[''],
-    title: [''],
-    description: [''],
-    body: [''],
+    title: ['',[Validators.required]],
+    description: ['',[Validators.required]],
+    body: ['',[Validators.required]],
     tagList: [''],
   });
-  //this.tagList = []
+  this.tagList = []
 }
   ngOnInit(): void {
     const variable = this.route.snapshot.paramMap.get('id2');
@@ -56,27 +56,27 @@ export class NewPostComponent implements OnInit {
 
   addTag(){
     // retrieve tag control
-    /*const tag = this.tagField.value;
+    const tag = this.tagField.value;
     // only add tag if it does not exist yet
     if (this.tagList.indexOf(tag) < 0) {
     this.tagList.push(tag);
     }
     // clear the input
-    this.tagField.reset('');*/
+    this.tagField.reset('');
   }
   removeTag(tagName: string){
-    //this.tagList = this.tagList.filter(tag => tag !== tagName);
+    this.tagList = this.tagList.filter(tag => tag !== tagName);
   }
   submitForm(){
     const variable = this.route.snapshot.paramMap.get('id2');
-    //this.stringArrayTOString(this.tagList);
+    this.stringArrayTOString(this.tagList);
     const post:Post = {
       id: 0,
       slug: this.postForm.get('title')!.value + "-" + Math.floor(Math.random() * 1000) + 1,
       title: this.postForm.get('title')!.value,
       description: this.postForm.get('description')!.value,
       body: this.postForm.get('body')!.value,
-      tagList: this.postForm.get('tagList')!.value,
+      tagList: this.lista,
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString(),
       favorite: false,
@@ -93,7 +93,8 @@ export class NewPostComponent implements OnInit {
         this.postForm.reset();
         this.tagField.reset();
 
-        //this.router.navigate(['/homePage',this.userId,'foro',this.userId]);
+        window.location.reload();
+
       },
       error: (err) => {
         this.snackBar.open('No se logro añadir!', '', {
@@ -107,15 +108,7 @@ export class NewPostComponent implements OnInit {
   }
 
   stringArrayTOString(listaTags:string[]) : void{
-/*
-    for(var i=0; i< listaTags.length; i++) {
-
-        if(i!=0) {
-          str += ",";
-        }
-        this.lista += listaTags[i];
-        i++;
-    }*/
-    //this.lista = this.tagList.toString();
+    this.lista = this.tagList.toString();
   }
+
 }

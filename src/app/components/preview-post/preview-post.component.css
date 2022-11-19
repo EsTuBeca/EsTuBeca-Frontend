@@ -31,7 +31,7 @@
     max-width: 30%;
     font-size: 0.9rem;
     font-weight: 300;
-    color: #bbb;
+    color: rgb(172, 172, 172);
     vertical-align: middle;
     cursor: pointer;
     font-family: 'Be Vietnam', sans-serif;
@@ -101,4 +101,3 @@
     text-decoration: inherit !important;
     
 }
-

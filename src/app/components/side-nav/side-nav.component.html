@@ -14,11 +14,11 @@
                 <mat-icon>home</mat-icon>
                 <span>Home</span>
             </button>
-            <button mat-button class="menu-button" [routerLink]="['/homePage',route.snapshot.paramMap.get('id'),'premium']">
+            <button mat-button class="menu-button" [routerLink]="['/homePage',route.snapshot.paramMap.get('id'),'premium',route.snapshot.paramMap.get('id')]">
                 <mat-icon>star</mat-icon>
                 <span>Hazte Premium</span>
             </button>
-            <button mat-button class="menu-button" [routerLink]="['/homePage',route.snapshot.paramMap.get('id'),'becas']">
+            <button mat-button class="menu-button" [routerLink]="['/homePage',route.snapshot.paramMap.get('id'),'becas',route.snapshot.paramMap.get('id')]">
                 <mat-icon>school</mat-icon>
                 <span>Becas</span>
             </button>
@@ -26,7 +26,7 @@
                 <mat-icon> chat_bubble_outline</mat-icon>
                 <span>Foro</span>
             </button>
-            <button mat-button class="menu-button" [routerLink]="['/homePage',route.snapshot.paramMap.get('id'),'cursos']">
+            <button mat-button class="menu-button" [routerLink]="['/homePage',route.snapshot.paramMap.get('id'),'cursos',route.snapshot.paramMap.get('id')]">
                 <mat-icon>book</mat-icon>
                 <span>Cursos</span>
             </button>

@@ -12,8 +12,8 @@
     display: inline-block;
     vertical-align: middle;
     margin-right: 10px;
-    height: 60px;
-    width: 60px;
+    height: 70px;
+    width: 70px;
     border-radius: 30px
 }
 
@@ -32,10 +32,24 @@
 }
 
 .article-meta .info .date {
-    color: rgb(233, 220, 220);
+    color: rgb(165, 164, 164);
     font-size: .8rem;
     display: block;
     font-family: 'Be Vietnam', sans-serif;
+}
+.article-meta .info .username {
+    color: rgb(165, 164, 164);
+    font-size: .8rem;
+    display: block;
+    font-family: 'Be Vietnam', sans-serif;
+    margin-top: 5px;
+}
+.article-meta .info .grade {
+    color: rgb(165, 164, 164);
+    font-size: .8rem;
+    display: block;
+    font-family: 'Be Vietnam', sans-serif;
+    margin-top: 5px;
 }
 
 .article-page .banner .article-meta .author {

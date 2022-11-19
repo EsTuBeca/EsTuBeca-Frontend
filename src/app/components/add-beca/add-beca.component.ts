@@ -12,6 +12,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddBecaComponent implements OnInit {
   myForm!: FormGroup;
+  userId:any;
 
   constructor(
     private fb: FormBuilder,
@@ -22,6 +23,7 @@ export class AddBecaComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.userId = this.route.snapshot.paramMap.get('id3');
     this.reactiveForm();
   }
 
@@ -39,7 +41,7 @@ export class AddBecaComponent implements OnInit {
   }
 
   saveBeca(): void {
-    const variable = this.route.snapshot.paramMap.get('id2');
+    const userId = this.route.snapshot.paramMap.get('id3');
     const beca: Beca= {
       id: 0,
       title: this.myForm.get('title')!.value,
@@ -56,7 +58,7 @@ export class AddBecaComponent implements OnInit {
         this.snackBar.open('La beca fue registrada con exito!', '', {
           duration: 3000,
         });
-        this.router.navigate(['/homePage',variable]);
+        this.router.navigate(['/homePage',userId,'becas',userId]);
       },
       error: (err) => {
         console.log(err);

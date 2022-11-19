@@ -1,84 +1,91 @@
 <div class="article-page">
 
-    <div class="banner">
-      <div class="container"  >
-        <h1>{{ post.title }}</h1>
-  
-        <div class="article-actions">
-            <app-meta-post [post]="post">
-      
-                <span [hidden]="canModify">
-                <a class="btn btn-sm btn-outline-secondary"
-                   [routerLink]="">
-                  <i class="ion-edit"></i> Edit Article
-                </a>
-      
-                <button class="btn btn-sm btn-outline-danger"
-                  [ngClass]="{disabled: isDeleting}"
-                  (click)="deletePost(post.id)">
-                  <i class="ion-trash-a"></i> Delete Article
-                </button>
-              </span>
-      
-              <span [hidden]="canModify">
-      
-                <app-favorite-button
-                  [post]="post"
-                  (toggle)="onToggleFavorite($event)">
-                  {{ post.favorite ? 'Unfavorite' : 'Favorite' }} Post <span class="counter">({{ post.favoritesCount }})</span>
-                </app-favorite-button>
-              </span>
-      
-            </app-meta-post>
-          </div>
-      </div>
-    </div>
-  
-    <div class="container page">
-  
-      <div class="row article-content">
-        <div class="col-md-12">
-  
-          <div> {{ post.body }}</div>
-  
-          <ul class="tag-list">
-            <li *ngFor="let tag of lista"
-              class="tag-default tag-pill tag-outline">
-              {{ tag }}
-            </li>
-          </ul>
-  
-        </div>
-      </div>
-  
-      <hr />
-  
+  <div class="banner"></div>
+  <div class="container">
 
-  
-      <div class="row">
-        <div class="col-xs-12 col-md-8 offset-md-2">
-  
-         <form class="card form-group" [formGroup]="commentForm">
-              <fieldset [disabled]="isSubmitting">
-                <div class="card-block">
-                  <textarea class="form-control"
-                    placeholder="Write a comment..."
-                    rows="3"
-                    formControlName="body"
-                  ></textarea>
-                </div>
-                <div class="card-footer">
-                  <img src="../../../assets/LogoIHC.png" class="comment-author-img" />
-                  <button class="btn btn-sm btn-primary" type="submit" (click)="addComment()">
-                   Post Comment
-                  </button>
-                </div>
-              </fieldset>
-        </form>
-  
-        </div>
+    <p> {{post.createdAt | date: 'longDate' }}</p>
+    <h1>{{ post.title }}</h1>
+
+    <div class="options">
+      <div class="article-actions" [hidden]="!canModify">
+        <a class="btn-icon">
+          <button mat-icon-button class="btn-sm">
+            <mat-icon style="color: #e15639">edit</mat-icon>
+          </button>
+          <span> Edit post </span>
+        </a>
+
+        <a class="btn-icon" (click)="deletePost(post.id)">
+          <button mat-icon-button class="btn-sm">
+            <mat-icon style="color: #1d1c5a">delete</mat-icon>
+          </button>
+          <span> Delete post </span>
+        </a>
+
       </div>
-  
+      <app-favorite-button [post]="post" (toggle)="onToggleFavorite($event)">
+        <span class="counter" style="font-size: 16px;">{{ " " + post.favoritesCount }}
+        </span>
+      </app-favorite-button>
+    </div>
+
+
+    <div class="col-md-12">
+      <span> {{ post.body }} </span>
+    </div>
+
+
+    <div class="tags">
+
+      <span> Tags :</span>
+      <ul class="tag-list">
+        <li *ngFor="let tag of lista" class="tag-default tag-pill tag-outline">
+          {{ tag }}
+        </li>
+      </ul>
+
+    </div>
+    <div class="autor">
+      <app-meta-post [post]="post" [detalle]="detalle">
+      </app-meta-post>
     </div>
   </div>
-  
+
+</div>
+<div style="margin-bottom: 50px;"></div>
+<hr style="border-width: 3px;" />
+<br>
+
+<div class="article-page">
+
+  <div *ngIf="
+    commentForm.get('body')?.hasError('') &&
+    commentForm.get('body')?.touched
+  ">
+    <span class="mda-form-msg"> No ingresaste un comentario </span>
+  </div>
+
+  <form class="card-form-group" [formGroup]="commentForm">
+    <fieldset [disabled]="isSubmitting">
+      <div class="card-block">
+        <textarea class="form-control" style="font-family: 'Be Vietnam', sans-serif;font-size: 17px;"
+          formControlName="body" rows="4" placeholder="Escribe un comentario....">
+        </textarea>
+      </div>
+
+      <div class="card-footer">
+        <img src="../../../assets/img/logo.png" class="comment-author-img" />
+        <button class="btn btn-sm btn-primary" type="submit" 
+        [disabled]="commentForm.invalid" (click)="addComment()">
+          <span>Comentar</span> 
+        </button>
+      </div>
+    </fieldset>
+
+  </form>
+
+  <app-list-comments *ngFor="let comentario of comments" [comentario]="comentario" [userId]="userId">
+
+  </app-list-comments>
+<div style="margin-bottom: 100px;"></div>
+</div>

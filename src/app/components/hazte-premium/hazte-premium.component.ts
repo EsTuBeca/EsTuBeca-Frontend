@@ -1,12 +1,13 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Role } from './../../models/role';
+import { User } from './../../models/user';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Profile } from 'src/app/models/profile';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Profile } from 'src/app/models/profile';
 import { UserService } from 'src/app/services/user.service';
-import { Role } from  './../../models/role';
-import { User } from  './../../models/user';
 
 declare var paypal;
+
 @Component({
   selector: 'app-hazte-premium',
   templateUrl: './hazte-premium.component.html',
@@ -89,5 +90,3 @@ export class HaztePremiumComponent implements OnInit {
   }
 
 }
-
-

@@ -5,6 +5,8 @@ import {BecaService} from './../../services/beca.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute} from '@angular/router';
 import { environment } from './../../../environments/environment';
+import { MatTableDataSource } from '@angular/material/table';
+
 @Component({
   selector: 'app-becas',
   templateUrl: './becas.component.html',
@@ -12,30 +14,34 @@ import { environment } from './../../../environments/environment';
 })
 export class BecasComponent implements OnInit {
   
-  beca!: Beca[];
+  becas: Beca[]=[];
   user!:any;
+  userId:any;
+  becaId:any;
   snackBar: any;
+  searchText!:string;
+  Title='';
   // isReadMore: boolean=false;
   data!: string;
+  dataSource = new MatTableDataSource(this.becas);
   
-  constructor(public route:ActivatedRoute,
+  constructor(
+    public route:ActivatedRoute,
     private becaService:BecaService) { }
 
   ngOnInit(): void {
-    const variable = this.route.snapshot.paramMap.get('id');
-    this.user = variable;
+    this.userId = this.route.snapshot.paramMap.get('id3');
     this.getBeca();
-/*     this.checkDataLength(this.data); */
   }
 
   getBeca(){
     this.becaService.getBeca().subscribe((data:Beca[])=>{
-      this.beca= data;
+      this.becas= data;
     })
   }
   deleteBeca(id: number) {
     this.becaService.deleteBeca(id).subscribe(() => {
-      this.beca = this.beca.filter((e: Beca) => {
+      this.becas = this.becas.filter((e: Beca) => {
         return e.id !== id ? e : false;
       });
       this.snackBar.open('La beca fue eliminada con exito!', '', {
@@ -43,13 +49,36 @@ export class BecasComponent implements OnInit {
       });
     });
   }
+
+    processBecaResponse(resp: any) {
+      const dateBeca: Beca[] = [];
+  
+      
+      this.data
+   
+    }
+
+    filterBecaByTitle(title: any) {
+      if (title.length === 0) {
+        return this.getBeca();
+      }
+  
+      this.becaService.getBecaByTitle(title).subscribe((resp: any) => {
+        this.processBecaResponse(resp);
+      });
+    }
+
+    /*applyFilter(filterValue: string) {
+      this.dataSource.filter = filterValue.trim().toLowerCase();
+    }*/
+    applyFilter(event: Event) {
+      const filterValue = (event.target as HTMLInputElement).value;
+      this.dataSource.filter = filterValue.trim().toLowerCase();
+    }
+  }
 /*   checkDataLength(data:string){
 
   } */
   
-  /* applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    beca.filter = filterValue.trim().toLowerCase();
-  } */
-}
+
 
