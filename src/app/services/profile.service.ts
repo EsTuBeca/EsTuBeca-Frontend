@@ -20,7 +20,7 @@ export class ProfileService {
     return this.http.post<Profile>(
       `${this.basePath}/profiles`, profile);  
   }
-  updateProfile(id: any, profile: Profile) {
+  updateProfile(id: any, profile: any) {
     return this.http.put<Profile>(`${this.basePath}/profiles/${id}`, profile);
   }
   

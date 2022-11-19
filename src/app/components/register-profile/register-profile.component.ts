@@ -8,7 +8,7 @@ import { User } from './../../models/user';
 import { UserService } from './../../services/user.service';
 import { Profile } from 'src/app/models/profile';
 import { ProfileService } from 'src/app/services/profile.service';
- 
+  
 @Component({
   selector: 'app-register-profile',
   templateUrl: './register-profile.component.html',
@@ -80,11 +80,11 @@ export class RegisterProfileComponent implements OnInit {
           name: this.myForm.get('name')!.value,
           lastName: this.myForm.get('lastName')!.value,
           phone: this.myForm.get('phone')!.value,
-          img:this.selectedFile,
+          picture:this.selectedFile,
           grade: this.myForm.get('grade')!.value,
         }
         const uploadImageData = new FormData();
-        uploadImageData.append('picture', perfil.img, perfil.img.name);
+        uploadImageData.append('picture', perfil.picture, perfil.picture.name);
         uploadImageData.append('id', perfil.user.id.toString());
         uploadImageData.append('userId', perfil.user.id.toString())
         uploadImageData.append('name', perfil.name)

@@ -9,7 +9,7 @@ import { ReadVarExpr, visitAll } from '@angular/compiler';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ProfileService } from 'src/app/services/profile.service';
 import { Profile } from 'src/app/models/profile';
-
+ 
 @Component({
   selector: 'app-side-nav',
   templateUrl: './side-nav.component.html',
@@ -21,7 +21,7 @@ export class SideNavComponent implements OnInit {
   user!: User;
   profile!:Profile;
   idUser: any;
-  public imgfiles: any = [];
+  imgfile: any
   public previewImg!: string;
   nombreCompleto!: string;
   nombreUsu!: string;
@@ -42,6 +42,7 @@ export class SideNavComponent implements OnInit {
       this.user = this.profile.user;
       this.nombreCompleto = this.profile.name + ' ' + this.profile.lastName;
       this.nombreUsu = this.user.username;
+      this.imgfile = 'data:image/jpeg;base64,' + this.profile.picture;
     })   
   }
 }
