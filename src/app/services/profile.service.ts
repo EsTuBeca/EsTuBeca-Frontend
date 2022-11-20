@@ -16,11 +16,11 @@ export class ProfileService {
   getProfileId(id:any){
     return this.http.get<Profile>(`${this.basePath}/profiles/${id}`);
   }
-  addProfile(profile: any) {
+  addProfile(profile: Profile) {
     return this.http.post<Profile>(
       `${this.basePath}/profiles`, profile);  
   }
-  updateProfile(id: any, profile: any) {
+  updateProfile(id: any, profile: Profile) {
     return this.http.put<Profile>(`${this.basePath}/profiles/${id}`, profile);
   }
   deleteProfile(id: any) {

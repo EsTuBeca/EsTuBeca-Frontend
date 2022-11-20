@@ -25,10 +25,10 @@ export class CursosComponent implements OnInit {
 
   ngOnInit(): void {
     this.userId = this.route.snapshot.paramMap.get('id4');
+    this.cursoId=this.route.snapshot.paramMap.get(':curso');
     this.getCurso();
 /*     this.checkDataLength(this.data); */
   }
-
   getCurso(){
     this.cursoService.getCurso().subscribe((data:Curso[])=>{
       this.curso= data;
@@ -46,11 +46,8 @@ export class CursosComponent implements OnInit {
   }
 
     processCursoResponse(resp: any) {
-      const dateCurso: Curso[] = [];
-  
-      
+      const dateCurso: Curso[] = []; 
       this.data
-   
     }
 
     filterCursoByName(name: any) {

@@ -1,9 +1,11 @@
+import { Tema } from './../../models/tema';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CursoService } from './../../services/curso.service';
 import { Curso } from 'src/app/models/curso';
+import { TemaService } from 'src/app/services/tema.service';
 @Component({
   selector: 'app-edit-curso',
   templateUrl: './edit-curso.component.html',
@@ -14,15 +16,18 @@ export class EditCursoComponent implements OnInit {
   cursos:Curso[]=[];
   myForm!: FormGroup;
   curso!: Curso;
+  tema!: Tema;
   idCurso: any;
   idUser:any;
+  idTema:any;
 
   constructor(
     private fb: FormBuilder,
     private cursoService: CursoService,
     private snackBar: MatSnackBar,
     private router: Router,
-    public route: ActivatedRoute
+    public route: ActivatedRoute,
+    private temaService:TemaService
   ) {}
 
   ngOnInit(): void {
@@ -61,6 +66,31 @@ export class EditCursoComponent implements OnInit {
             duration: 6000,
           });
           this.router.navigate(['/homePage',variable,'cursos',variable]);
+        },
+        error: (err) => {
+          console.log(err);
+        },
+      });
+  }
+  updateTema() {
+    const variable = this.route.snapshot.paramMap.get('id4');
+    const tema: Tema = {
+      id: this.idTema,
+      position:this.myForm.get('position')!.value,
+      title: this.myForm.get('title')!.value,
+      description: this.myForm.get('description')!.value,
+      body:this.myForm.get('body')!.value,
+      video:this.myForm.get('video')!.value,
+      curso:this.curso
+    };
+    this.temaService
+      .editTema(this.idTema, tema)
+      .subscribe({
+        next: (data) => {
+          this.snackBar.open('El tema fue actualizado con exito!', '', {
+            duration: 6000,
+          });
+          this.router.navigate(['/homePage',variable,'temas',variable]);
         },
         error: (err) => {
           console.log(err);

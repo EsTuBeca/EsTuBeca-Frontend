@@ -1,9 +1,11 @@
-import { Curso } from './../../models/curso';
+import { Curso } from 'src/app/models/curso';
+import { TemaService } from './../../services/tema.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CursoService } from 'src/app/services/curso.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import {Tema} from 'src/app/models/tema';
 
 @Component({
   selector: 'app-add-curso',
@@ -13,7 +15,8 @@ import { Component, OnInit } from '@angular/core';
 export class AddCursoComponent implements OnInit {
 
   myForm!: FormGroup;
-  userId:any;
+  userId:any;S
+  curso!:Curso;
 
   constructor(
     private fb: FormBuilder,
@@ -21,6 +24,7 @@ export class AddCursoComponent implements OnInit {
     private snackBar: MatSnackBar,
     private router: Router,
     public route:ActivatedRoute,
+    private temaService:TemaService
   ) {}
 
   ngOnInit(): void {

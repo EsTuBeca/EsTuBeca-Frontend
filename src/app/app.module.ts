@@ -32,7 +32,9 @@ import { PostDetalleComponent } from './components/post-detalle/post-detalle.com
 import { ListCommentsComponent } from './components/list-comments/list-comments.component';
 import { AddCursoComponent } from './components/add-curso/add-curso.component';
 import { EditCursoComponent } from './components/edit-curso/edit-curso.component';
-import { LandingPageComponent } from './components/landing-page/landing-page.component';
+import { CursoDetalleComponent } from './components/curso-detalle/curso-detalle.component';
+import { EditPostComponent } from './components/edit-post/edit-post.component';
+import { AddTemaComponent } from './components/add-tema/add-tema.component';
 
 
 @NgModule({
@@ -62,7 +64,9 @@ import { LandingPageComponent } from './components/landing-page/landing-page.com
     ListCommentsComponent,
     AddCursoComponent,
     EditCursoComponent,
-    LandingPageComponent,
+    CursoDetalleComponent,
+    EditPostComponent,
+    AddTemaComponent,
   ],
   imports: [
     BrowserModule,

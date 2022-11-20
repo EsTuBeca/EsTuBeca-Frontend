@@ -63,7 +63,7 @@ export class HaztePremiumComponent implements OnInit {
           this.user.role=rol;
         });
         
-        this.userService.upgradeUser(this.idUser,this.user).subscribe({
+        this.userService.upgradeUser(this.idUser, rol).subscribe({
           next: (data) => {
             this.snackBar.open('Ahora eres premium!', '', {
               duration: 3000,

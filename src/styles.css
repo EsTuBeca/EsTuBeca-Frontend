@@ -15,4 +15,9 @@ body {
  }
 
 html, body { height: 100%; }
+.mat-typography {
+    font-family: 'Be Vietnam', sans-serif; 
+    letter-spacing: normal;
+}
+html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

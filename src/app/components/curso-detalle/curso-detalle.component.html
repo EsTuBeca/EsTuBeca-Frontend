@@ -1,0 +1,47 @@
+<div class="alinear">
+    <h1 class="title">{{curso.name}}</h1><br/>
+    <div class="alinear">
+        <h2>{{curso.description}}</h2>
+        <h2>{{curso.cost}}</h2>
+    </div>
+    <br/>
+</div>
+<div>
+    <div>
+      <h2 class="alinear2">  Lista de temas</h2>
+    </div>
+    <div class="col-log-6" style="text-align:right">
+      <button mat-raised-button [routerLink]="['/homePage',userId,'cursos',userId,'detalle',idCurso,'addTema',idCurso]">
+        Añadir Tema
+      </button>
+    </div>
+  </div>
+
+  <div class="container">
+      <mat-card class="tema-card" *ngFor="let tema of temas">
+            <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title>{{tema.title}}</mat-card-title>
+          <mat-card-subtitle>{{tema.description}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <p>
+           {{tema.body}}
+          </p>
+          
+        </mat-card-content>
+        <mat-card-actions>      
+            <a class="pointer" [routerLink]="['/homePage',userId,'edit',userId,tema.id]" style="color: #1878b0; cursor: pointer">
+              <mat-icon>edit</mat-icon>
+            </a>
+            <a
+            (click)="deleteTema(tema.id)"
+            class="pointer"
+            style="color: #e15639"
+          >
+            <mat-icon style="cursor: pointer">delete</mat-icon>
+          </a>
+          </mat-card-actions>
+      </mat-card>    
+  </div>
+    

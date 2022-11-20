@@ -1,7 +1,7 @@
 <div class="editor-page">
     <div class="container-page">
       <div class="row">
-        <h1>Agrega un nuevo post!</h1>
+        <h1>Edite su post</h1>
           <form [formGroup]="postForm">
               <fieldset>  
                 
@@ -15,10 +15,10 @@
                 <span class="mda-form-msg"> * Este campo es obligatorio </span>
               </div>
               <div
-              *ngIf="postForm.get('title')?.hasError('maxlength')"
-          >
-            <span class="mda-form-msg"> * Este campo maximo tiene 100 caracteres </span>
-          </div>
+                  *ngIf="postForm.get('title')?.hasError('maxlength')"
+              >
+                <span class="mda-form-msg"> * Este campo maximo tiene 100 caracteres </span>
+              </div>
                 <input class="form-control"
                   style="font-family: 'Be Vietnam', sans-serif; font-size: 20px;"
                   formControlName="title"
@@ -87,7 +87,7 @@
               <button class="btn-primary" type="button" 
               [disabled]="postForm.invalid"
               (click)="submitForm()">
-               <span>Publicar</span>
+               <span>Actualizar</span>
               </button>
   
             </fieldset>

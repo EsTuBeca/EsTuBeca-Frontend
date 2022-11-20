@@ -49,12 +49,12 @@ h1{
   }
 
 .tag-default {
-  background-color: #9da1a5;
+  background-color: #b3b3b3;
 }
 
 .tag-default:focus,
 .tag-default:hover {
-  background-color: #787c80
+  background-color: #6a6f74
 }
 
 .tag-pill {
@@ -84,13 +84,12 @@ h1{
   padding-right: 6%;
   padding-left: 6%;
   flex: 0 0 75%;
-  max-width: 70%
+  max-width: 75%
 }
 
 .row {
   display: flex;
   flex-wrap: wrap;
-  margin-left: -15px;
-  margin-right: -15px;
+
 
 }

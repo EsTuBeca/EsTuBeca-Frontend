@@ -21,7 +21,7 @@ export class SideNavComponent implements OnInit {
   user!: User;
   profile!:Profile;
   idUser: any;
-  imgfile: any;
+  public imgfiles: any = [];
   public previewImg!: string;
   nombreCompleto!: string;
   nombreUsu!: string;
@@ -42,7 +42,6 @@ export class SideNavComponent implements OnInit {
       this.user = this.profile.user;
       this.nombreCompleto = this.profile.name + ' ' + this.profile.lastName;
       this.nombreUsu = this.user.username;
-      this.imgfile = 'data:image/jpeg;base64,' + this.profile.picture;
     })   
   }
 }

@@ -3,7 +3,7 @@ import { Profile } from './../../models/profile';
 import { Post } from './../../models/post';
 import { UserService } from 'src/app/services/user.service';
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { throwError } from 'rxjs';
 import { User } from 'src/app/models/user';
@@ -40,17 +40,21 @@ export class PostDetalleComponent implements OnInit {
 
   canModify: boolean = false;
   detalle:boolean = true
-  
+  contador:any;
+
   constructor(private postService: PostService, private router: Router,
     private route: ActivatedRoute, private comentarioService: ComentarioService,
     private userService:UserService,private fb: UntypedFormBuilder,
     private profileService: ProfileService,private snackBar: MatSnackBar) { 
 
     this.commentForm = this.fb.group({
-      id:[''],
-      body: [''],
+        id:[''],
+        position:[''],
+        title: ['', [Validators.required, Validators.maxLength(60)]],
+        description:['', [Validators.required, Validators.maxLength(60)]],
+        body: ['', [Validators.required, Validators.maxLength(400)]],
+        video: ['', [Validators.required]],
     });
-
   }
 
 
@@ -67,6 +71,7 @@ export class PostDetalleComponent implements OnInit {
       this.post.title = data.title;
       this.post.body = data.body;
       this.post.author = data.author;
+      this.contador = data.favoritesCount;
       this.lista = this.post.tagList.split(",");
     });
     this.profileService.getProfileId(this.userId).subscribe(
@@ -92,13 +97,28 @@ export class PostDetalleComponent implements OnInit {
 
 
   onToggleFavorite(favorited: boolean) {
-    this.post.favorite = favorited;
+    this.post['favorite'] = favorited;
 
     if (favorited) {
-      this.post.favoritesCount++;
-    } else {
-      this.post.favoritesCount--;
+
+      this.postService.favoriteUpdate(this.post.id, this.contador + 1).subscribe({
+        next: (data) => {},
+        error: (err) => {
+         console.log(err);
+        },
+      });
+      this.contador++;
+    } 
+    else {
+      this.postService.favoriteUpdate(this.post.id, this.contador - 1).subscribe({
+        next: (data) => {},
+        error: (err) => {
+         console.log(err);
+        },
+      });
+      this.contador--;
     }
+
   }
   addComment() {
     const variable = this.route.snapshot.paramMap.get('id2');
@@ -151,8 +171,9 @@ export class PostDetalleComponent implements OnInit {
       this.snackBar.open('El post fue eliminado con exito!', '', {
         duration: 6000,
       });
-      this.ngOnInit();   
+ 
     });
-    window.location.reload();
+    this.router.navigate(['/homePage',this.userId, 'foro',this.userId]);
   }
+
 }
