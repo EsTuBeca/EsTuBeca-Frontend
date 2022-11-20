@@ -6,6 +6,6 @@ export interface Profile{
     name:string;
     lastName:string;
     phone:string;
-    img:any;
+    picture:any;
     grade:string;
 }

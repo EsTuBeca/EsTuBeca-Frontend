@@ -158,11 +158,20 @@
       <div class="row">
         <div class="col-lg-8">
           <div *ngIf="previewImg">
-            <img width="500" [src]="previewImg" src="https://bysperfeccionoral.com/wp-content/uploads/2020/01/136-1366211_group-of-10-guys-login-user-icon-png.jpg">
+            <img width="500" lenght="250" [src]="previewImg" src="https://bysperfeccionoral.com/wp-content/uploads/2020/01/136-1366211_group-of-10-guys-login-user-icon-png.jpg">
           </div> 
           <div id="div-file">
             <span class="paragraph">Subir Archivo</span>
-            <input (change)="captureFile($event)" type="file" id="btn-enviar">
+            <input  accept="image/png, image/jpeg"
+                (change)="onFileChanged($event)" type="file" id="btn-enviar">
+                <!-- <input
+                  id="file-upload"
+                  accept="image/png, image/jpeg"
+                  (change)="onFileChanged($event)"
+                  type="file"
+                  formControlName="img"
+                /> -->
+                <span> {{ nameImg }}</span>
           </div>
         </div>
       </div> 

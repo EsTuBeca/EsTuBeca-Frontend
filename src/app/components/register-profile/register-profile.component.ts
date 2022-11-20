@@ -81,13 +81,13 @@ export class RegisterProfileComponent implements OnInit {
           name: this.myForm.get('name')!.value,
           lastName: this.myForm.get('lastName')!.value,
           phone: this.myForm.get('phone')!.value,
-          img:this.selectedFile,
+          picture:this.selectedFile,
           grade: this.myForm.get('grade')!.value,
           
         };
       
         const uploadImageData = new FormData();
-        uploadImageData.append('picture', perfil.img, perfil.img.name);
+        uploadImageData.append('picture', perfil.picture, perfil.picture.name);
         uploadImageData.append('userId', perfil.user.id.toString())
         uploadImageData.append('name', perfil.name)
         uploadImageData.append('lastname', perfil.lastName)
@@ -99,7 +99,7 @@ export class RegisterProfileComponent implements OnInit {
           this.snackBar.open('El perfil fue registrado con exito!', '', {
             duration: 2000,
           });
-          this.router.navigate(['/']);
+          this.router.navigate(['/login-user']);
         },
         error: (err) => {
           console.log(err);
