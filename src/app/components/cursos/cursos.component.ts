@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Curso } from 'src/app/models/curso';
 import { User } from './../../models/user';
 import {CursoService} from './../../services/curso.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatSnackBar, MatSnackBarRef, SimpleSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute} from '@angular/router';
 import { environment } from './../../../environments/environment';
 
@@ -19,16 +19,23 @@ export class CursosComponent implements OnInit {
   snackBar: any;
   // isReadMore: boolean=false;
   data!: string;
+  public searchText!:string;
+  Title='';
+  searchKey:string="";
   
   constructor(public route:ActivatedRoute,
     private cursoService:CursoService) { }
 
   ngOnInit(): void {
     this.userId = this.route.snapshot.paramMap.get('id4');
-    this.cursoId=this.route.snapshot.paramMap.get(':curso');
     this.getCurso();
 /*     this.checkDataLength(this.data); */
+  this.cursoService.search.subscribe((val:any)=>{
+  this.searchKey=val;
+
+})
   }
+
   getCurso(){
     this.cursoService.getCurso().subscribe((data:Curso[])=>{
       this.curso= data;
@@ -46,18 +53,47 @@ export class CursosComponent implements OnInit {
   }
 
     processCursoResponse(resp: any) {
-      const dateCurso: Curso[] = []; 
-      this.data
-    }
-
-    filterCursoByName(name: any) {
-      if (name.length === 0) {
-        return this.getCurso();
-      }
+      const dateCurso: Curso[] = [];
   
-      this.cursoService.getCursoByName(name).subscribe((resp: any) => {
-        this.processCursoResponse(resp);
-      });
+      
+      this.data
+   
     }
+    selectCurso(curso) {
+      console.log(`The selected beca is::  ${curso.title}`);
+    }
+    search(event:any){
+      this.searchText=(event.target as HTMLInputElement).value;
+      console.log(this.searchText);
+      this.cursoService.search.next(this.searchText);
+  }
+  openSnackBar(
+    message: string,
+    action: string
+  ): MatSnackBarRef<SimpleSnackBar> {
+    return this.snackBar.open(message, action, {
+      duration: 2000,
+    });
+  }
+
+  exportExcel() {
+    this.cursoService.exportCurso().subscribe(
+      (data: any) => {
+        let file = new Blob([data], {
+          type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+        });
+        let fileUrl = URL.createObjectURL(file);
+        var anchor = document.createElement('a');
+        anchor.download = 'cursos.xlsx';
+        anchor.href = fileUrl;
+        anchor.click();
+
+        this.openSnackBar('Archivo exportado correctamente', 'Exitosa');
+      },
+      (error: any) => {
+        this.openSnackBar('No se pudo exportar el archivo', 'Error');
+      }
+    );
+  }
   }
 
