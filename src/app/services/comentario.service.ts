@@ -26,4 +26,7 @@ export class ComentarioService {
   delete(id:any){
     return this.http.delete<Comentario>(`${this.basePath}/comentarios/${id}`);
   }
+  editComentario(id:any,comentario:Comentario){
+    return this.http.put<Comentario>(`${this.basePath}/comentarios/${id}`, comentario);
+  }
 }

@@ -32,8 +32,16 @@ import { PostDetalleComponent } from './components/post-detalle/post-detalle.com
 import { ListCommentsComponent } from './components/list-comments/list-comments.component';
 import { AddCursoComponent } from './components/add-curso/add-curso.component';
 import { EditCursoComponent } from './components/edit-curso/edit-curso.component';
+import { CursoDetalleComponent } from './components/curso-detalle/curso-detalle.component';
+import { EditPostComponent } from './components/edit-post/edit-post.component';
+import { DialogOverviewComponent } from './components/dialog-overview/dialog-overview.component';
+import { PreviewAvisoComponent } from './components/preview-aviso/preview-aviso.component';
+import { AddTemaComponent } from './components/add-tema/add-tema.component';
+import { CursoTemasComponent } from './components/curso-temas/curso-temas.component';
 import { SearchBecaPipe } from './pipe/search-beca.pipe';
-import { CursosDetalleComponent } from './components/cursos-detalle/cursos-detalle.component';
+import { LandingPageComponent } from './components/landing-page/landing-page.component';
+import { EditTemaComponent } from './components/edit-tema/edit-tema.component';
+import { TemasComponent } from './components/temas/temas.component';
 
 
 @NgModule({
@@ -63,8 +71,17 @@ import { CursosDetalleComponent } from './components/cursos-detalle/cursos-detal
     ListCommentsComponent,
     AddCursoComponent,
     EditCursoComponent,
+    CursoDetalleComponent,
+    EditPostComponent,
+    DialogOverviewComponent,
+    PreviewAvisoComponent,
+    AddTemaComponent,
+    CursoTemasComponent,
     SearchBecaPipe,
-    CursosDetalleComponent,
+    LandingPageComponent,
+    EditTemaComponent,
+    TemasComponent,
+
   ],
   imports: [
     BrowserModule,

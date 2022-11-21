@@ -41,10 +41,10 @@ export class AddTemaComponent implements OnInit {
     this.myForm = this.fb.group({
       id:[''],
       position:[''],
-      title: ['', [Validators.required, Validators.maxLength(60)]],
-      description:['', [Validators.required, Validators.maxLength(60)]],
-      body: ['', [Validators.required, Validators.maxLength(400)]],
-      video: ['', [Validators.required, Validators.maxLength(100)]],
+      title: ['', [Validators.required, Validators.maxLength(100)]],
+      description:['', [Validators.required, Validators.maxLength(400)]],
+      body: ['', [Validators.required, Validators.maxLength(1200)]],
+      video: ['', [Validators.required, Validators.maxLength(1000)]],
     });
   }
   saveTema(): void {
@@ -62,7 +62,7 @@ export class AddTemaComponent implements OnInit {
     };
     this.temaService.addTema(tema).subscribe({
       next: (data) => {
-        this.snackBar.open('El TEMA fue registrado con exito!', '', {
+        this.snackBar.open('El tema fue registrado con exito!', '', {
           duration: 3000,
         });
         this.router.navigate(['/homePage',userId,'cursos',userId,'detalle',this.cursoId]);

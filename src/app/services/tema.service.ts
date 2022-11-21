@@ -24,7 +24,7 @@ export class TemaService {
       tema
     );  
   }
-  editTema(id: any, tema: Tema) {
+  updateTema(id: any, tema: Tema) {
     return this.http.put<Tema>(`${this.basePath2}/temas/${id}`, tema);
   }
   deleteTema(id: any) {
@@ -32,5 +32,8 @@ export class TemaService {
   }
   temasByCurso(id:any){
     return this.http.get<Tema[]>(`${this.basePath2}/cursos/${id}/temas`);
+  }
+  editTema(id: any, tema: Tema) {
+    return this.http.put<Tema>(`${this.basePath2}/temas/${id}`, tema);
   }
 }

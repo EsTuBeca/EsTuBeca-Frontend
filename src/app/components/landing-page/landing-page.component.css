@@ -72,12 +72,12 @@ header{
     font-size: 30px;
     color: #000 ;
     font-weight: bold;
+    font-family: 'Be Vietnam', sans-serif;
 }
 .titulo{
     font-size: 40px;
     color: #000 ;
     font-weight: bold;
-
 }
 .menu{
     display:flex;
@@ -95,6 +95,7 @@ header{
     font-weight: bold;
     margin-left: 20px;
     margin-right: 20px;
+    font-family: 'Be Vietnam', sans-serif;
 }
 .menu li a:hover{
     padding: 10px 15px;
@@ -132,7 +133,26 @@ header{
     font-size:60px;
     margin-bottom: 50px;
 }
-
+.mda-form-msg{
+color: red;
+font-size: 14px;
+float: left;
+justify-content: flex-start;
+}
+#my-form-status{
+    font-family: 'Be Vietnam', sans-serif;
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+}
+.mensajito{
+	justify-content: center;
+    margin-top: 2em;
+    text-align: center;
+    display: block;
+    width: 100%;
+    margin-bottom: -40px;
+}
 .header-cont button {
     font-family: 'Be Vietnam', sans-serif;
 	display: inline-flex;

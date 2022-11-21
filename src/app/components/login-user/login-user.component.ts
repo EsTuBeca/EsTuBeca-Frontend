@@ -39,60 +39,7 @@ export class LoginUserComponent implements OnInit {
       })
       
   }
-  existeRolUsuario():void{
-    this.http.get<any>(`${this.basePath}/roles`).subscribe(res=>{
-      const rol = res.find((a:any)=>{
-        return rol.name === "Usuario" });
-      if(rol){
-        this.snackBar.open('Inicie sesión o registrese c:', '', {
-          duration: 3000,
-        });
-      }
-      else{
-        const rol:Role = { idRole: 1, roleUser:"Usuario"}
-        this.rolService.addRol(rol).subscribe({
-          next: (data) => {
-            this.snackBar.open('Se creo el rol usuario!', '', {
-              duration: 2000,
-                      });
-          },
-          error: (err) => {
-            console.log(err);
-          },
-        });
-      }
-    },err=>{
-      alert("Algo esta mal!")
-    })
-
-  }
-  existeRolPremium():void{
-    this.http.get<any>(`${this.basePath}/roles`).subscribe(res=>{
-      const rol = res.find((a:any)=>{
-        return rol.name === "Premium" });
-      if(rol){
-        this.snackBar.open('Inicie sesión o registrese c:', '', {
-          duration: 3000,
-        });
-      }
-      else{
-        const rol:Role = { idRole: 2, roleUser:"Premium" };
-        this.rolService.addRol(rol).subscribe({
-          next: (data) => {
-            this.snackBar.open('Se creo el rol premium!', '', {
-              duration: 2000,
-                      });
-          },
-          error: (err) => {
-            console.log(err);
-          },
-        });
-      }
-    },err=>{
-      alert("Algo esta mal!")
-    })
-
-  }
+ 
   login(){
     this.http.get<any>(`${this.basePath}/users`)
     .subscribe(res=>{

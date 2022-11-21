@@ -232,4 +232,9 @@ button::after {
      button span {
         font-size: 18px;
     }
+
+    select{
+        font-family: 'Be Vietnam', sans-serif;
+        padding: 10px;
+    }
 }

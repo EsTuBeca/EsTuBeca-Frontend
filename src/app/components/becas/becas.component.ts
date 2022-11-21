@@ -18,7 +18,6 @@ export class BecasComponent implements OnInit {
   user!:any;
   userId:any;
   becaId:any;
-  snackBar: any;
   public searchText!:string;
   Title='';
   searchKey:string="";
@@ -28,7 +27,7 @@ export class BecasComponent implements OnInit {
   
   constructor(
     public route:ActivatedRoute,
-    private becaService:BecaService) { }
+    private becaService:BecaService,private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.userId = this.route.snapshot.paramMap.get('id3');

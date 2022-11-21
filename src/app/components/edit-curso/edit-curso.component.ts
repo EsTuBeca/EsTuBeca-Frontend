@@ -35,9 +35,9 @@ export class EditCursoComponent implements OnInit {
     this.cursoService.getCursoId(this.idCurso).subscribe((data) => {
       this.curso = data;
       this.myForm = this.fb.group({
-        title: [this.curso.title,[Validators.required, Validators.maxLength(60)]],
+        name: [this.curso.title,[Validators.required, Validators.maxLength(60)]],
         description: [this.curso.description],
-        //finished:false,
+        finished:false,
         cost:this.curso.cost
       });
     })
@@ -48,9 +48,9 @@ export class EditCursoComponent implements OnInit {
     const variable = this.route.snapshot.paramMap.get('id4');
     const curso: Curso = {
       id: this.idCurso,
-      title: this.myForm.get('title')!.value,
+      title: this.myForm.get('name')!.value,
       description: this.myForm.get('description')!.value,
-      //finished:false,
+      finished:false,
       cost:this.myForm.get('cost')!.value
     };
     this.cursoService

@@ -193,7 +193,7 @@ select.form-control:not([size]):not([multiple]) {
 
 .btn-primary {
 	font-family: 'Be Vietnam', sans-serif;
-	background: #D8843B;
+	background: #f8953f;
 	color: #fff;
 	text-decoration: none;
 	border: none;
@@ -223,7 +223,7 @@ select.form-control:not([size]):not([multiple]) {
 	z-index: 1;
 	top: 0;
 	left: calc(-100% - 80px);
-	border-bottom: 80px solid #e7b048;
+	border-bottom: 80px solid #ffbe46;
 	border-right: 80px solid transparent;
 	transition: .4s ease-in-out all;
 }

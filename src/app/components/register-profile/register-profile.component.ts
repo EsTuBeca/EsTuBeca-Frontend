@@ -23,6 +23,8 @@ export class RegisterProfileComponent implements OnInit {
   username: any;
   usu !: User;
   registro:boolean = false;
+  selectedFile: any;
+  nameImg: string = '';
 
   constructor( private fb:FormBuilder,
     private userService:UserService,
@@ -36,13 +38,20 @@ export class RegisterProfileComponent implements OnInit {
       this.userId = this.user.id;
     });
   }
+
+  onFileChanged(event: any) {
+    this.selectedFile = event.target.files[0];
+    console.log(this.selectedFile);
+    this.nameImg = event.target.files[0].name;
+  }
+
   reactiveForm(){
     this.myForm = this.fb.group({
       id:[''],
       name: ['',[Validators.required,Validators.maxLength(20)]],
       lastName:['',[Validators.required,Validators.maxLength(20) ]],
-      phone:['',[Validators.required]],
-      grade: ['',[Validators.required,Validators.maxLength(20)]],
+      phone:['',[Validators.required,Validators.maxLength(9)]],
+      grade: ['',[Validators.required,Validators.maxLength(30)]],
     })
   }
   deleteUser(): void{
@@ -52,7 +61,7 @@ export class RegisterProfileComponent implements OnInit {
         this.snackBar.open('Se elimino el user creado!', '', {
           duration: 2000,
         });
-        this.router.navigate(['/']);
+        this.router.navigate(['/login-user']);
       },
       error: (err) => {
         console.log(err);
@@ -73,16 +82,25 @@ export class RegisterProfileComponent implements OnInit {
           name: this.myForm.get('name')!.value,
           lastName: this.myForm.get('lastName')!.value,
           phone: this.myForm.get('phone')!.value,
-          imgUrl: "nohay",
+          picture:this.selectedFile,
           grade: this.myForm.get('grade')!.value,
           
         };
-        this.profileService.addProfile(perfil).subscribe({ 
+      
+        const uploadImageData = new FormData();
+        uploadImageData.append('picture', perfil.picture, perfil.picture.name);
+        uploadImageData.append('userId', perfil.user.id.toString())
+        uploadImageData.append('name', perfil.name)
+        uploadImageData.append('lastname', perfil.lastName)
+        uploadImageData.append('phone', perfil.phone)
+        uploadImageData.append('grade', perfil.grade)
+
+      this.profileService.addProfile(uploadImageData).subscribe({ 
           next: (data) => {
           this.snackBar.open('El perfil fue registrado con exito!', '', {
             duration: 2000,
           });
-          this.router.navigate(['/']);
+          this.router.navigate(['/login-user']);
         },
         error: (err) => {
           console.log(err);

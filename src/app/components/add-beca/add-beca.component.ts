@@ -1,9 +1,12 @@
+import { Title } from '@angular/platform-browser';
+import { AvisoService } from './../../services/aviso.service';
 import { Beca } from './../../models/beca';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { BecaService } from './../../services/beca.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { Aviso } from 'src/app/models/aviso';
 
 @Component({
   selector: 'app-add-beca',
@@ -20,6 +23,7 @@ export class AddBecaComponent implements OnInit {
     private snackBar: MatSnackBar,
     private router: Router,
     public route:ActivatedRoute,
+    private avisoService: AvisoService
   ) {}
 
   ngOnInit(): void {
@@ -32,11 +36,11 @@ export class AddBecaComponent implements OnInit {
       id: [''],
       title: ['', [Validators.required, Validators.maxLength(60)]],
       imgUrl: ['', [Validators.required]],
-      description: [''],
-      requirements:[''],
-      telephone:[''] ,
-      urlpage:[''] ,
-      benefits:['']
+      description: ['',[Validators.required]],
+      requirements:['',[Validators.required]],
+      telephone:['', [Validators.required]] ,
+      urlpage:['', [Validators.required]] ,
+      benefits:['', [Validators.required]]
     });
   }
 
@@ -64,5 +68,27 @@ export class AddBecaComponent implements OnInit {
         console.log(err);
       },
     });
+
+    const aviso: Aviso = {
+      id: 0,
+      type: 'general',
+      title: 'beca',
+      description: 'Se creo una nueva beca: ' + this.myForm.get('title')!.value + '. ¡Mírala en becas!' ,
+      created: new Date().toISOString(),
+      user: this.userId
+      
+    };
+    this.avisoService.addAviso(aviso).subscribe({
+      next: (data) => {
+        this.snackBar.open('La beca fue registrada con exito!', '', {
+          duration: 3000,
+        });
+        this.router.navigate(['/homePage',userId,'becas',userId]);
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
+
   }
 }

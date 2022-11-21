@@ -13,8 +13,11 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import {MatTabsModule} from '@angular/material/tabs';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatStepperModule} from '@angular/material/stepper';
 import {MatChipsModule, MAT_CHIPS_DEFAULT_OPTIONS} from '@angular/material/chips';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MatSelectModule} from '@angular/material/select';
 @NgModule({
   declarations: [],
   imports: [
@@ -34,7 +37,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatListModule,
     MatTabsModule,
     MatChipsModule,
-    FormsModule
+    MatDialogModule,
+    FormsModule,
+    MatStepperModule,
+    MatSelectModule
   ],
   exports: [
     MatSliderModule,
@@ -51,7 +57,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatListModule,
     MatTabsModule,
     MatChipsModule,
-    FormsModule
+    MatDialogModule,
+    FormsModule,
+    MatStepperModule,
+    MatSelectModule
   ]
 })
 export class AngularMaterialModule { }

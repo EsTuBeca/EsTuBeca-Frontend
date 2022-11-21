@@ -31,9 +31,9 @@ export class AddCursoComponent implements OnInit {
   reactiveForm() {
     this.myForm = this.fb.group({
       id: [''],
-      title: ['', [Validators.required, Validators.maxLength(60)]],
+      name: ['', [Validators.required, Validators.maxLength(60)]],
       description: [''],
-      //finished:false,
+      finished:false,
       cost:['']
     });
   }
@@ -42,9 +42,9 @@ export class AddCursoComponent implements OnInit {
     const userId = this.route.snapshot.paramMap.get('id4');
     const curso: Curso= {
       id: 0,
-      title: this.myForm.get('title')!.value,
+      title: this.myForm.get('name')!.value,
       description: this.myForm.get('description')!.value,
-      //finished: false,
+      finished: false,
       cost: this.myForm.get('cost')!.value,
     };
     this.cursoService.addCurso(curso).subscribe({

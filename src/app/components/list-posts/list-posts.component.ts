@@ -15,27 +15,38 @@ export class ListPostsComponent implements OnInit {
 
   constructor(private postService: PostService) {
   }
-  query!: PostListConfig;
+
   results!: Post[];
   loading = false;
   currentPage = 1;
   totalPages: Array<number> = [1];
   count !: number;
-  
+
 
   ngOnInit(): void {
     this.count = this.postService.countPosts();
+    this.runQuery();
   }
   @Input()
   limit!: number;
+
   @Input()
   set config(config: PostListConfig) {
-    if (config) {
-      this.query = config;
-      this.currentPage = 1;
-      this.runQuery();
+    if (config.type === 'tag') {
+      this.listarTag(config);
+    }
+ 
+    if (config.type === 'all') {
+      this.postService.getPostsReverse()
+        .subscribe(data => {
+          this.loading = false;
+          this.results = data;
+          // Used from http://www.jstips.co/en/create-range-0...n-easily-using-one-line/
+          this.totalPages = Array.from(new Array(Math.ceil(data.length/ this.limit)), (val, index) => index + 1);
+        });
     }
   }
+
 
   setPageTo(pageNumber) {
     this.currentPage = pageNumber;
@@ -45,8 +56,8 @@ export class ListPostsComponent implements OnInit {
     this.loading = true;
     this.results = [];
     if (this.limit) {
-      this.query.filters.limit = this.limit;
-      this.query.filters.offset = (this.limit * (this.currentPage - 1));
+      // this.query.filters.limit = this.limit;
+      // this.query.filters.offset = (this.limit * (this.currentPage - 1));
     }
     this.postService.getPostsReverse()
       .subscribe(data => {
@@ -55,6 +66,25 @@ export class ListPostsComponent implements OnInit {
         // Used from http://www.jstips.co/en/create-range-0...n-easily-using-one-line/
         this.totalPages = Array.from(new Array(Math.ceil(this.count / this.limit)), (val, index) => index + 1);
       });
+  }
 
+  listarTag(config: PostListConfig) {
+
+    if (config.tag === 'Todos') {
+      this.postService.getPostsReverse()
+        .subscribe(data => {
+          this.loading = false;
+          this.results = data;
+          // Used from http://www.jstips.co/en/create-range-0...n-easily-using-one-line/
+          this.totalPages = Array.from(new Array(Math.ceil(this.count / this.limit)), (val, index) => index + 1);
+        });
+
+    }
+    else {
+      this.postService.getPostsByTag(config.tag).subscribe((data) => {
+        this.loading = false;
+        this.results = data;
+      });
+    }
   }
 }

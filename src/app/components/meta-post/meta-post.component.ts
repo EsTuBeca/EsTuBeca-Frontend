@@ -18,6 +18,9 @@ export class MetaPostComponent implements OnInit {
 
   @Input()
   detalle:boolean = false;
+  
+  imgfile: any;
+
 
   constructor(private profileService: ProfileService,){
   }
@@ -27,6 +30,7 @@ export class MetaPostComponent implements OnInit {
   .subscribe((data) => {
       this.profile = data;
       this.nombreCompleto = this.profile.name + ' ' + this.profile.lastName;
+      this.imgfile = 'data:image/jpeg;base64,' + this.profile.picture;
     });
   }
 }

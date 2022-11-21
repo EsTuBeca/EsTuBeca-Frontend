@@ -8,4 +8,6 @@ export interface Tema{
     body:string;
     video:string;
     curso:Curso;
+    
+  
 }
