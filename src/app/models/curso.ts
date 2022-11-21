@@ -1,7 +1,7 @@
 export interface Curso{
     id:number;
-    name: string;
+    title: string;
     description: string;
-    finished:boolean;
+    //finished:boolean;
     cost: number;
 }

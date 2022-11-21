@@ -4,6 +4,7 @@
   <mat-tab-group>
     <mat-tab>
       <ng-template mat-tab-label
+      [ngClass]="{'active': listConfig.type === 'all' && !listConfig.filters.tag}"
       (click)="setListTo('all')">
         <mat-icon class="example-tab-icon">public</mat-icon>
         <span class = "espacio"></span>
@@ -11,19 +12,14 @@
       </ng-template>
       <div class="row">
         <div class="col-md-9">
-          <app-list-posts [limit]="3" [config]="listConfig">
-
-          </app-list-posts>
+          <app-list-posts [limit]="10" [config]="listConfig"></app-list-posts>
         </div>
         <div class="col-md-3">
           <div class="sidebar">
             <p>Popular Tags</p>
 
             <div class="tag-list">
-              <a *ngFor="let tag of tags" (click)="setListTo('tag', tag.name)" 
-              class="tag-default tag-pill"
-              [ngClass]="{'active': listConfig.type === 'tag'}"
-              >
+              <a *ngFor="let tag of tags" (click)="setListTo('all', {tag: tag})" class="tag-default tag-pill">
                 {{ tag.name }}
               </a>
             </div>
@@ -48,5 +44,5 @@
       <app-new-post></app-new-post>
     </mat-tab>
 
-     </mat-tab-group>
+  </mat-tab-group>
 </div>

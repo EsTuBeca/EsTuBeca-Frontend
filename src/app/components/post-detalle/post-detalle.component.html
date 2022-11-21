@@ -8,8 +8,7 @@
 
     <div class="options">
       <div class="article-actions" [hidden]="!canModify">
-        <a class="btn-icon"  
-        [routerLink]="['/homePage',userId,'edit', userId, 'post',post.id]">
+        <a class="btn-icon">
           <button mat-icon-button class="btn-sm">
             <mat-icon style="color: #e15639">edit</mat-icon>
           </button>
@@ -25,7 +24,7 @@
 
       </div>
       <app-favorite-button [post]="post" (toggle)="onToggleFavorite($event)">
-        <span class="counter" style="font-size: 16px;">{{ " " + contador }}
+        <span class="counter" style="font-size: 16px;">{{ " " + post.favoritesCount }}
         </span>
       </app-favorite-button>
     </div>
@@ -70,7 +69,7 @@
     <fieldset [disabled]="isSubmitting">
       <div class="card-block">
         <textarea class="form-control" style="font-family: 'Be Vietnam', sans-serif;font-size: 17px;"
-          formControlName="body" rows="3" placeholder="Escribe un comentario....">
+          formControlName="body" rows="4" placeholder="Escribe un comentario....">
         </textarea>
       </div>
 

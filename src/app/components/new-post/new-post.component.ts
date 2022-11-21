@@ -33,13 +33,13 @@ export class NewPostComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private fb: UntypedFormBuilder,
-    private snackBar: MatSnackBar) { 
+    private snackBar: MatSnackBar,) { 
 
   this.postForm = this.fb.group({
     id:[''],
-    title: ['',[Validators.required, Validators.maxLength(100)]],
+    title: ['',[Validators.required]],
     description: ['',[Validators.required]],
-    body: ['',[Validators.required, Validators.maxLength(1200)]],
+    body: ['',[Validators.required]],
     tagList: [''],
   });
   this.tagList = []

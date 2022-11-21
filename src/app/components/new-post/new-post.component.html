@@ -14,11 +14,6 @@
               >
                 <span class="mda-form-msg"> * Este campo es obligatorio </span>
               </div>
-              <div
-              *ngIf="postForm.get('title')?.hasError('maxlength')"
-          >
-            <span class="mda-form-msg"> * Este campo maximo tiene 100 caracteres </span>
-          </div>
                 <input class="form-control"
                   style="font-family: 'Be Vietnam', sans-serif; font-size: 20px;"
                   formControlName="title"
@@ -51,11 +46,6 @@
                 "
               >
                 <span class="mda-form-msg"> * Este campo es obligatorio </span>
-              </div>
-              <div
-              *ngIf="postForm.get('body')?.hasError('maxlength')"
-              >
-                <span class="mda-form-msg"> * Este campo maximo tiene 1200 caracteres </span>
               </div>
                 <textarea class="form-control"
                   style="font-family: 'Be Vietnam', sans-serif;font-size: 17px;"

@@ -17,9 +17,6 @@ export class PostService {
   getPostsReverse() {
     return this.http.get<Post[]>(`${this.basePath}/posts/reverse`);
   }
-  getPostsByTag(tag: string) {
-    return this.http.get<Post[]>(`${this.basePath}/posts/tag/${tag}`);
-  }
   countPosts() {
     var count = 0;
     this.getPosts().forEach(post => {count ++;});
@@ -41,8 +38,6 @@ export class PostService {
     return this.http.delete<Post>(`${this.basePath}/posts/${id}`);
   }
 
-  favoriteUpdate(id: any, favorite: any) {
-    return this.http.put<Post>(`${this.basePath}/posts/${id}/favorite`, favorite);
-  }
+
     
 }

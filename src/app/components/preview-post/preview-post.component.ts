@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Post } from 'src/app/models/post';
 import { Profile } from 'src/app/models/profile';
@@ -19,7 +18,7 @@ export class PreviewPostComponent implements OnInit {
   detalle:boolean = false;
   
    constructor(private postService: PostService,private router: Router,
-    public route: ActivatedRoute, private snackbar:MatSnackBar) { }
+    public route: ActivatedRoute) { }
 
    ngOnInit(): void {
       this.userId = this.route.snapshot.paramMap.get('id2');
@@ -31,22 +30,8 @@ export class PreviewPostComponent implements OnInit {
     this.post['favorite'] = favorited;
 
     if (favorited) {
-
-      this.postService.favoriteUpdate(this.post.id, this.contador + 1).subscribe({
-        next: (data) => {},
-        error: (err) => {
-         console.log(err);
-        },
-      });
       this.contador++;
-    } 
-    else {
-      this.postService.favoriteUpdate(this.post.id, this.contador - 1).subscribe({
-        next: (data) => {},
-        error: (err) => {
-         console.log(err);
-        },
-      });
+    } else {
       this.contador--;
     }
   }

@@ -14,7 +14,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatChipsModule, MAT_CHIPS_DEFAULT_OPTIONS} from '@angular/material/chips';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [],
   imports: [
@@ -33,7 +33,8 @@ import {MatChipsModule, MAT_CHIPS_DEFAULT_OPTIONS} from '@angular/material/chips
     MatCardModule,
     MatListModule,
     MatTabsModule,
-    MatChipsModule
+    MatChipsModule,
+    FormsModule
   ],
   exports: [
     MatSliderModule,
@@ -49,7 +50,8 @@ import {MatChipsModule, MAT_CHIPS_DEFAULT_OPTIONS} from '@angular/material/chips
     MatCardModule,
     MatListModule,
     MatTabsModule,
-    MatChipsModule
+    MatChipsModule,
+    FormsModule
   ]
 })
 export class AngularMaterialModule { }

@@ -1,11 +1,9 @@
-import { Curso } from 'src/app/models/curso';
-import { TemaService } from './../../services/tema.service';
+import { Curso } from './../../models/curso';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CursoService } from 'src/app/services/curso.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import {Tema} from 'src/app/models/tema';
 
 @Component({
   selector: 'app-add-curso',
@@ -15,8 +13,7 @@ import {Tema} from 'src/app/models/tema';
 export class AddCursoComponent implements OnInit {
 
   myForm!: FormGroup;
-  userId:any;S
-  curso!:Curso;
+  userId:any;
 
   constructor(
     private fb: FormBuilder,
@@ -24,7 +21,6 @@ export class AddCursoComponent implements OnInit {
     private snackBar: MatSnackBar,
     private router: Router,
     public route:ActivatedRoute,
-    private temaService:TemaService
   ) {}
 
   ngOnInit(): void {
@@ -35,9 +31,9 @@ export class AddCursoComponent implements OnInit {
   reactiveForm() {
     this.myForm = this.fb.group({
       id: [''],
-      name: ['', [Validators.required, Validators.maxLength(60)]],
+      title: ['', [Validators.required, Validators.maxLength(60)]],
       description: [''],
-      finished:false,
+      //finished:false,
       cost:['']
     });
   }
@@ -46,9 +42,9 @@ export class AddCursoComponent implements OnInit {
     const userId = this.route.snapshot.paramMap.get('id4');
     const curso: Curso= {
       id: 0,
-      name: this.myForm.get('name')!.value,
+      title: this.myForm.get('title')!.value,
       description: this.myForm.get('description')!.value,
-      finished: false,
+      //finished: false,
       cost: this.myForm.get('cost')!.value,
     };
     this.cursoService.addCurso(curso).subscribe({
